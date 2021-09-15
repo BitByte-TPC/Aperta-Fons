@@ -21,6 +21,7 @@
 import {ref} from "vue";
 import useSignup from "../composables/useSignup";
 import useSignInGoogle from "../composables/useSignInGoogle";
+import {useRouter} from "vue-router";
 
 export default {
   name: "Signup",
@@ -33,6 +34,8 @@ export default {
 
     const { error, signup } = useSignup()
 
+    const router = useRouter()
+
     const handleSubmit = async () => {
       loading.value = true
       await signup(email.value, password.value, displayName.value)
@@ -44,8 +47,8 @@ export default {
 
     const { err, googleLogin } = useSignInGoogle()
 
-    const handleGoogleSubmit = () => {
-      googleLogin()
+    const handleGoogleSubmit = async () => {
+      await googleLogin()
       if (!err.value) {
         context.emit('login')
       } else {
