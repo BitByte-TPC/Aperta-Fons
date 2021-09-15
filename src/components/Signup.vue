@@ -3,12 +3,13 @@
     <div class="login">
       <div class="signInGoogle hvr-grow" @click="handleGoogleSubmit">
         <img src="../assets/google-icon.png" class="google-icon">
-        <span>Sign in with Google</span>
+        <span>Sign Up with Google</span>
       </div>
-      <div class="signInForm">
+      <div class="signUpForm">
+        <input class="field" type="text" required placeholder="Name" v-model="displayName">
         <input class="field" type="email" required placeholder="Email" v-model="email">
         <input class="field" type="password" required placeholder="Password" v-model="password">
-        <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign In</button>
+        <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign Up</button>
         <button v-else class="disabled hvr-grow">Signing In</button>
       </div>
     </div>
@@ -17,24 +18,24 @@
 
 <script>
 import {ref} from "vue";
-import useLogin from "@/composables/useLogin";
+import useSignup from "../composables/useSignup";
 import useSignInGoogle from "../composables/useSignInGoogle";
 
 export default {
-  name: "Login",
+  name: "Signup",
   setup(props, context) {
-    const {error, login} = useLogin()
 
+    const displayName = ref("")
     const email = ref("")
     const password = ref("")
-    const loading = ref(false)
-
+    const loading = ref(null)
+    const {error, signup} = useSignup()
     const handleSubmit = async () => {
       loading.value = true
-      await login(email.value, password.value)
-      loading.value = false
-      if(!error.value) {
-        context.emit("login")
+      await signup(email.value, password.value, displayName.value)
+      if (!error.value) {
+        loading.value = false
+        context.emit('login')
       }
     }
     const {err,googleLogin}=useSignInGoogle()
@@ -49,8 +50,7 @@ export default {
       }
     }
 
-
-    return { email, password, loading, handleSubmit, handleGoogleSubmit }
+    return {displayName, email, password, handleSubmit,loading,handleGoogleSubmit}
   }
 }
 </script>
@@ -66,6 +66,7 @@ export default {
 
   background: #3770FF;
 }
+
 .signInGoogle {
   width: 40vw;
   height: 64px;
@@ -81,10 +82,12 @@ export default {
 
   cursor: pointer;
 }
+
 .signInGoogle img {
   height: 35px;
   margin-left: 100px;
 }
+
 .signInGoogle span {
   font-family: Poppins, sans-serif;
   font-style: normal;
@@ -98,9 +101,10 @@ export default {
 
   color: #000000;
 }
-.signInForm {
+
+.signUpForm {
   width: 40vw;
-  height: 38vh;
+  height: 50vh;
 
   margin: 40px 0;
   display: flex;
@@ -112,9 +116,10 @@ export default {
   box-shadow: 4px 4px 40px 2px #466ED1;
   border-radius: 8px;
 }
-.signInForm input {
+
+.signUpForm input {
   width: 90%;
-  height: 18%;
+  height: 13%;
 
   border: none;
   box-sizing: border-box;
@@ -131,7 +136,8 @@ export default {
 
   padding: 8px 14px;
 }
-.signInForm button {
+
+.signUpForm button {
   width: 90%;
   height: 18%;
 
@@ -151,6 +157,7 @@ export default {
 
   cursor: pointer;
 }
+
 .hvr-grow {
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -159,10 +166,22 @@ export default {
   transition-duration: 0.3s;
   transition-property: transform;
 }
+
 .hvr-grow:hover,
 .hvr-grow:focus,
 .hvr-grow:active {
   transform: scale(1.03);
   box-shadow: 4px 4px 40px 4px #466ED1;;
 }
+.signUpForm p{
+  font-family: Poppins,sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #E8EEFF;
+}
+
 </style>

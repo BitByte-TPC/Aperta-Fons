@@ -1,12 +1,15 @@
 <template>
-  <Login />
+<!--  <Login />-->
+  <Signup></Signup>
+
 </template>
 
 <script>
 import Login from "@/components/Login";
+import Signup from "../components/Signup";
 export default {
   name: "Auth",
-  components: {Login}
+  components: {Signup, Login}
 }
 </script>
 
