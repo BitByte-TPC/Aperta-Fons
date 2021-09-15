@@ -1,7 +1,7 @@
 import firebase from "firebase/compat";
 import {ref} from "vue";
 
-const error = ref(null)
+const err = ref(null)
 const googleLogin = () => {
     const provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithPopup(provider).then((result) => {
@@ -9,12 +9,12 @@ const googleLogin = () => {
         const token = credential.accessToken;
         const user = result.user;
     }).catch((err) => {
-        error.value = err.message
+        err.value = err.message
     })
 }
 
 const useSignInGoogle = () => {
-    return {error, googleLogin}
+    return {err, googleLogin}
 }
 
 export default useSignInGoogle
