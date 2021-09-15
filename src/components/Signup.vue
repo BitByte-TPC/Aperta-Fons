@@ -9,8 +9,9 @@
         <input class="field" type="text" required placeholder="Name" v-model="displayName">
         <input class="field" type="email" required placeholder="Email" v-model="email">
         <input class="field" type="password" required placeholder="Password" v-model="password">
-        <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign Up</button>
-        <button v-else class="disabled hvr-grow">Signing In</button>
+          <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign Up</button>
+          <button v-else class="disabled hvr-grow">Signing In</button>
+          <p @click="handleClick">Already have an account? Sign in instead</p>
       </div>
     </div>
   </div>
@@ -29,7 +30,9 @@ export default {
     const email = ref("")
     const password = ref("")
     const loading = ref(null)
-    const {error, signup} = useSignup()
+
+    const { error, signup } = useSignup()
+
     const handleSubmit = async () => {
       loading.value = true
       await signup(email.value, password.value, displayName.value)
@@ -38,19 +41,24 @@ export default {
         context.emit('login')
       }
     }
-    const {err,googleLogin}=useSignInGoogle()
-    const handleGoogleSubmit=()=>{
+
+    const { err, googleLogin } = useSignInGoogle()
+
+    const handleGoogleSubmit = () => {
       googleLogin()
-      if (!err.value)
-      {
+      if (!err.value) {
         context.emit('login')
-      }
-      else{
+      } else {
         console.log(err.value)
       }
     }
 
-    return {displayName, email, password, handleSubmit,loading,handleGoogleSubmit}
+    const handleClick = () => {
+      context.emit("toggleAuth")
+    }
+
+
+    return { displayName, email, password, handleSubmit, loading, handleGoogleSubmit, handleClick }
   }
 }
 </script>
@@ -139,7 +147,7 @@ export default {
 
 .signUpForm button {
   width: 90%;
-  height: 18%;
+  height: 13%;
 
   background: #E8EEFF;
   border: none;
@@ -173,15 +181,20 @@ export default {
   transform: scale(1.03);
   box-shadow: 4px 4px 40px 4px #466ED1;;
 }
-.signUpForm p{
-  font-family: Poppins,sans-serif;
+
+.signUpForm p {
+  width: 90%;
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
-  display: flex;
-  align-items: center;
-  color: #E8EEFF;
-}
+  text-align: left;
 
+  color: #E8EEFF;
+
+  cursor: pointer;
+}
 </style>
