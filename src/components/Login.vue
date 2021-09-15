@@ -10,6 +10,7 @@
         <input class="field" type="password" required placeholder="Password" v-model="password">
         <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign In</button>
         <button v-else class="disabled hvr-grow">Signing In</button>
+        <p @click="handleClick">Don’t have an account? Sign up instead</p>
       </div>
     </div>
   </div>
@@ -49,8 +50,11 @@ export default {
       }
     }
 
+    const handleClick = () => {
+      context.emit("toggleAuth")
+    }
 
-    return { email, password, loading, handleSubmit, handleGoogleSubmit }
+    return { email, password, loading, handleSubmit, handleGoogleSubmit, handleClick }
   }
 }
 </script>
@@ -164,5 +168,20 @@ export default {
 .hvr-grow:active {
   transform: scale(1.03);
   box-shadow: 4px 4px 40px 4px #466ED1;;
+}
+.signInForm p {
+  width: 90%;
+  margin: 0;
+
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: left;
+
+  color: #E8EEFF;
+
+  cursor: pointer;
 }
 </style>
