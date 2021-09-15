@@ -5,9 +5,11 @@
       <p id="subH">A Month Long Open Source Challenge</p>
       <p id="text">Presented by The Programming Club, IIITDMJ</p>
       <div class="buttonContainer">
-        <button class="button hvr-grow">
-          <img src="../assets/register.svg" alt="register" />Register
-        </button>
+        <router-link to="/auth" style="text-decoration: none; color: inherit;">
+          <button class="button hvr-grow">
+            <img src="../assets/register.svg" alt="register" />Register
+          </button>
+        </router-link>
         <button class="button hvr-grow">
           <img src="../assets/discord.svg" alt="discord" />Discord
         </button>
@@ -23,26 +25,24 @@
       <h1 class="about-heading">About</h1>
       <div class="about-content">
         <p>
-          Lorem ipsum dolor sit amet,
-          <span class="highlight">consectetur</span> adipiscing elit. Eget lacus
-          pellentesque purus ornare fermentum. Imperdiet consectetur nibh nec
-          euismod dignissim malesuada cum. Nisl volutpat nisi, tempus vel
-          nunc.Volutpat, adipiscing sed aliquet potenti at. Nisi montes, amet
-          feugiat pellentesque aliquet volutpat ut ornare. Ridiculus ullamcorper
-          pharetra, in proin odio nisl in id nunc.
+          Aperta Fons is a <span class="highlight">month-long open source event</span>, that is aimed at encouraging you towards
+          the world of open-source and taking the first step towards various open-source programs
+          like <span class="highlight">Outreachy, Google Summer of Code, MLH,</span> etc. This event is managed by BitByte,
+          The Programming Club and Google DSC of IIITDM Jabalpur.
         </p>
         <p>
-          Tellus tincidunt massa ullamcorper lectus ipsum dui. Blandit nullam
-          lorem amet leo vestibulum malesuada. Netus maecenas a nisl vehicula
-          quis nulla. Odio pulvinar erat dolor vulputate feugiat fringilla
-          aliquam magna. Nec elementum lacinia eu, risus eget. Maecenas morbi
-          eget viverra egestas velit. Amet habitasse vel porttitor eros
-          malesuada vitae quis.
+          This event is aimed at matching you with open source, free software, and technology-related organizations to write code and become part of these communities. The organizations provide mentors who act as guides through the entire process, from learning about the community to contributing code.
         </p>
         <p>
-          Eget ultricies enim gravida elit mi sed blandit id. Luctus non quisque
-          amet tellus. Aenean mattis id quam porttitor imperdiet in ultricies.
-          Ullamcorper neque elit lorem facilisi nibh.
+          The goals of our Event are to:
+          <br />
+          - <span class="highlight">Inspire</span> you to begin participating in open source development.
+          <br />
+          - <span class="highlight">Identifying</span> open-source projects and bring in new developers.
+          <br />
+          - <span class="highlight">Provide</span> you the opportunity to do work and give you industry experience.
+          <br />
+          - <span class="highlight">Give</span> you more exposure to real-world software development
         </p>
       </div>
     </div>
@@ -182,16 +182,16 @@ export default {
   color: #fff;
   height: 100vh;
   width: 72%;
-  margin: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 0;
+  margin: auto auto 0;
 }
 .about-heading {
-  font-family: Stargaze;
+  font-family: Stargaze, sans-serif;
   margin: 0;
+  padding: 5vh 0;
   font-style: normal;
   font-weight: normal;
   font-size: 5.5vw;
@@ -200,7 +200,7 @@ export default {
   text-align: center;
 }
 .about-content {
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   line-height: 4vh;
   font-size: 1.2vw;
 }
@@ -208,6 +208,7 @@ export default {
   padding: 10px 0;
 }
 .highlight {
+  padding:  0 3px;
   position: relative;
   background-color: #3770ff;
 }
