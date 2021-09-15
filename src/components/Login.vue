@@ -34,19 +34,18 @@ export default {
       loading.value = true
       await login(email.value, password.value)
       loading.value = false
-      if(!error.value) {
+      if (!error.value) {
         context.emit("login")
       }
     }
 
-    const {err,googleLogin} = useSignInGoogle()
-    const handleGoogleSubmit=()=>{
-      googleLogin()
-      if (!err.value)
-      {
-        context.emit('login')
-      }
-      else{
+    const {err, googleLogin} = useSignInGoogle()
+    const handleGoogleSubmit = async () => {
+      await googleLogin()
+      if (!err.value) {
+        console.log("Auth Complete")
+        context.emit("login")
+      } else {
         console.log(err.value)
       }
     }
@@ -55,7 +54,7 @@ export default {
       context.emit("toggleAuth")
     }
 
-    return { email, password, loading, handleSubmit, handleGoogleSubmit, handleClick }
+    return {email, password, loading, handleSubmit, handleGoogleSubmit, handleClick}
   }
 }
 </script>
@@ -71,6 +70,7 @@ export default {
 
   background: #3770FF;
 }
+
 .signInGoogle {
   width: 40vw;
   height: 64px;
@@ -86,10 +86,12 @@ export default {
 
   cursor: pointer;
 }
+
 .signInGoogle img {
   height: 35px;
   margin-left: 100px;
 }
+
 .signInGoogle span {
   font-family: Poppins, sans-serif;
   font-style: normal;
@@ -103,6 +105,7 @@ export default {
 
   color: #000000;
 }
+
 .signInForm {
   width: 40vw;
   height: 38vh;
@@ -117,6 +120,7 @@ export default {
   box-shadow: 4px 4px 40px 2px #466ED1;
   border-radius: 8px;
 }
+
 .signInForm input {
   width: 90%;
   height: 18%;
@@ -136,6 +140,7 @@ export default {
 
   padding: 8px 14px;
 }
+
 .signInForm button {
   width: 90%;
   height: 18%;
@@ -156,6 +161,7 @@ export default {
 
   cursor: pointer;
 }
+
 .hvr-grow {
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -164,12 +170,14 @@ export default {
   transition-duration: 0.3s;
   transition-property: transform;
 }
+
 .hvr-grow:hover,
 .hvr-grow:focus,
 .hvr-grow:active {
   transform: scale(1.03);
   box-shadow: 4px 4px 40px 4px #466ED1;;
 }
+
 .signInForm p {
   width: 90%;
   margin: 0;
