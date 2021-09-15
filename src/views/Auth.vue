@@ -1,12 +1,13 @@
 <template>
-  <Login v-if="toggle" @toggleAuth="toggleAuth"/>
-  <Signup v-else @toggleAuth="toggleAuth"/>
+  <Login v-if="toggle" @toggleAuth="toggleAuth" @login="handleLogin"/>
+  <Signup v-else @toggleAuth="toggleAuth" @login="handleLogin"/>
 </template>
 
 <script>
 import Login from "@/components/Login";
 import Signup from "../components/Signup";
 import {ref} from "vue";
+import {useRouter} from "vue-router";
 
 export default {
   name: "Auth",
@@ -18,7 +19,13 @@ export default {
       toggle.value = !toggle.value
     }
 
-    return { toggle, toggleAuth }
+    const router = useRouter()
+
+    const handleLogin = () => {
+      router.push({name: "Dashboard"})
+    }
+
+    return { toggle, toggleAuth, handleLogin }
   }
 }
 </script>

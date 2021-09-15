@@ -1,6 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Auth from "@/views/Auth";
+import {projectAuth} from "@/firebase/config";
+import Dashboard from "@/views/Dashboard";
+
+const requireAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if(!user) {
+    next({path: "/auth"})
+  }
+  else {
+    next()
+  }
+}
+
+const requireNoAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if(user) {
+    next({path: "/dashboard"})
+  }
+  else {
+    next()
+  }
+}
 
 const routes = [
   {
@@ -11,8 +33,15 @@ const routes = [
   {
     path: '/auth',
     name: 'Auth',
-    component: Auth
+    component: Auth,
+    beforeEnter: requireNoAuth
   },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    beforeEnter: requireAuth
+  }
 ]
 
 const router = createRouter({

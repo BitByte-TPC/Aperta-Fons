@@ -38,7 +38,8 @@ export default {
         context.emit("login")
       }
     }
-    const {err,googleLogin}=useSignInGoogle()
+
+    const {err,googleLogin} = useSignInGoogle()
     const handleGoogleSubmit=()=>{
       googleLogin()
       if (!err.value)

@@ -150,6 +150,7 @@ export default {
   text-align: center;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .hvr-grow {
   transform: translateZ(0);
