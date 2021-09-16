@@ -8,7 +8,8 @@
   <!--  Landing Section-->
 
 
-  <div class="home">
+
+  <div class="home" id="home">
     <div class="container">
       <p id="heading">Aperta-Fons</p>
       <p id="subH">A Month Long Open Source Challenge</p>
@@ -19,9 +20,11 @@
             <img src="../assets/register.svg" alt="register"/>Register
           </button>
         </router-link>
-        <button class="button hvr-grow">
-          <img src="../assets/discord.svg" alt="discord"/>Discord
-        </button>
+        <a href="https://discord.gg/rdQ9ezYE" style="text-decoration: none">
+          <button class="button hvr-grow">
+            <img src="../assets/discord.svg" alt="discord"/>Discord
+          </button>
+        </a>
       </div>
       <p id="start">Starts in</p>
       <div class="timer">
@@ -41,7 +44,8 @@
   <!--  About Section-->
 
 
-  <div class="about-section">
+
+  <div class="about-section" id="about">
     <div class="about">
       <h1 class="about-heading">About</h1>
       <div class="about-content">
@@ -83,7 +87,8 @@
   <!--  Prize Section-->
 
 
-  <div class="prize-section">
+
+  <div class="prize-section" id="prize">
     <div class="prize">
       <h1 class="prize-heading">
         What's in it for you?
@@ -117,7 +122,7 @@
 
   <!--  FAQ Section-->
 
-  <div class="faq">
+  <div class="faq" id="faq">
     <p class="faq_head">FAQS</p>
     <div class="accordion" id="accordionExample">
       <div class="accordion-item bg-black">
@@ -191,9 +196,9 @@
       <div class="accordion-item bg-black">
         <h2 class="accordion-header" id="headingFive">
           <button class="accordion-button bg-black collapsed" type="button" style="color: #ffffff"
-                  data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                  data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
                   aria-controls="collapseFour">
-            How do I submit my pull requests on Event Website? (clarity required)
+            How do I submit my pull requests on Event Website?
           </button>
         </h2>
         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
@@ -299,8 +304,8 @@ export default {
 }
 
 #subH {
-  font-family: "Poppins", sans-serif;
-  font-size: 4.4vh;
+  font-family: "Stargaze", sans-serif;
+  font-size: 4.2vh;
   line-height: 5.2vh;
   color: #fff;
   font-weight: initial;

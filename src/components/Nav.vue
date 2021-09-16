@@ -7,13 +7,11 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li><a href="https://vanila.io" target="_blank">Login/Register</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Home</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Dashboard</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Prizes</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">About</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">FAQs</a></li>
-      <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Logout</a></li>
+      <li><router-link to="/dashboard">Dashboard</router-link></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#prize">Prizes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQs</a></li>
     </ul>
   </div>
   </template>
@@ -56,7 +54,7 @@ body {
   background: #3770ff;
 }
 .sidebarMenuInner{
-  margin-top: 15vh;
+  margin-bottom: 15vh;
   padding:0;
   border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
