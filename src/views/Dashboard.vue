@@ -8,7 +8,7 @@
   </div>
   <div class="content">
     <div class="joke-box">
-      <p>Glad you to see you here, but the challenge hasn't started yet.<br />Here is a programming joke for you...</p>
+      <p>Glad to see you here, but the challenge hasn't started yet.<br />Here is a programming joke for you...</p>
       <p><b>{{joke}}</b></p>
       <button @click="getJoke" class="bold">Another joke?</button>
     </div>

@@ -11,13 +11,13 @@
 
   <div class="home" id="home">
     <div class="container">
-      <p id="heading">Aperta-Fons</p>
+      <p id="heading">Aperta Fons</p>
       <p id="subH">A Month Long Open Source Challenge</p>
       <p id="text">Presented by The Programming Club, IIITDMJ</p>
       <div class="buttonContainer">
         <router-link to="/auth" style="text-decoration: none; color: inherit;">
           <button class="button hvr-grow">
-            <img src="../assets/register.svg" alt="register"/>Register
+            <img src="../assets/register.svg" alt="register"/>{{user ? "Dashboard" : "Register"}}
           </button>
         </router-link>
         <a href="https://discord.gg/rdQ9ezYE" style="text-decoration: none">
@@ -231,6 +231,7 @@
 
 import {ref} from "vue";
 import Nav from "@/components/Nav";
+import {projectAuth} from "@/firebase/config";
 
 
 export default {
@@ -269,8 +270,9 @@ export default {
       }
     }, 1000);
 
+    const user = projectAuth.currentUser
 
-    return {days, hours, mins, secs};
+    return {days, hours, mins, secs, user};
   },
 };
 </script>
@@ -296,7 +298,7 @@ export default {
 #heading {
   margin: 0;
   font-family: "Stargaze", serif;
-  font-size: 12vh;
+  font-size: 12.4vh;
   line-height: 14vh;
   color: #fff;
   background: none;
