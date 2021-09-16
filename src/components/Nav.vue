@@ -8,9 +8,12 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li><a href="https://vanila.io" target="_blank">Login/Register</a></li>
+      <li><a href="https://instagram.com/plavookac" target="_blank">Home</a></li>
+      <li><a href="https://instagram.com/plavookac" target="_blank">Dashboard</a></li>
       <li><a href="https://instagram.com/plavookac" target="_blank">Prizes</a></li>
       <li><a href="https://twitter.com/plavookac" target="_blank">About</a></li>
-      <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
+      <li><a href="https://instagram.com/plavookac" target="_blank">FAQs</a></li>
+      <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Logout</a></li>
     </ul>
   </div>
   </template>
@@ -38,7 +41,6 @@ body {
   vertical-align: middle;
   font-size: 3em;
   font-weight: bold;
-  letter-spacing: 1.25px;
 }
 #sidebarMenu {
   height: 100%;
@@ -46,6 +48,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   position: fixed;
+  z-index: 2;
   left: 0;
   width: 30vw;
   transform: translateX(-30vw);
@@ -53,7 +56,7 @@ body {
   background: #3770ff;
 }
 .sidebarMenuInner{
-  margin-bottom: 25vh;
+  margin-top: 15vh;
   padding:0;
   border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
@@ -88,10 +91,10 @@ input[type=checkbox] {
   display: none;
 }
 .sidebarIconToggle {
+  position: fixed;
   transition: all 0.3s;
   box-sizing: border-box;
   cursor: pointer;
-  position: absolute;
   margin-top: 2vh;
   margin-left: 2vw;
   z-index: 99;
