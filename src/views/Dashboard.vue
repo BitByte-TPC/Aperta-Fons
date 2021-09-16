@@ -1,7 +1,10 @@
 <template>
   <div class="navi">
     <span>Dashboard</span>
-    <button @click="handleLogout">Logout</button>
+    <div class="inner">
+      <router-link to="/" style="text-decoration: none; color: inherit;"><span>Home</span></router-link>
+      <button @click="handleLogout">Logout</button>
+    </div>
   </div>
   <div class="content">
     <div class="joke-box">
@@ -124,5 +127,9 @@ export default {
   font-family: 'Poppins', sans-serif;
   font-size: 2vh;
   line-height: 3vh;
+}
+.inner {
+  display: flex;
+  align-items: center;
 }
 </style>
