@@ -1,4 +1,14 @@
 <template>
+                                          <!--  Navigation Section-->
+
+
+  <Nav></Nav>
+
+
+
+                                          <!--  Landing Section-->
+
+
   <div class="home">
     <div class="container">
       <p id="heading">Aperta-Fons</p>
@@ -28,6 +38,10 @@
       </div>
     </div>
   </div>
+
+                            <!--  About Section-->
+
+
   <div class="about-section">
     <div class="about">
       <h1 class="about-heading">About</h1>
@@ -66,6 +80,10 @@
       </div>
     </div>
   </div>
+
+                                        <!--  Prize Section-->
+
+
   <div class="prize-section">
     <div class="prize">
       <h1 class="prize-heading">
@@ -83,10 +101,10 @@
             easy-level and 1 medium-level PR merged to repositories with 100+⭐
             will get exclusive club stickers.
           </p>
-          <p style="margin: 0px; margin-bottom:10px">
+          <p style="margin: 0 0 10px;">
             <span class="bolder">NOT ENOUGH?</span>
           </p>
-          <p style="margin: 0px">
+          <p style="margin: 0">
             &bull; All participants with at least 1 PR merged will get a
             <span class="bolder"
               >Google Developer Student Club certificate</span
@@ -97,13 +115,19 @@
       </div>
     </div>
   </div>
-</template>
+
+                                    <!--  FAQ Section-->
+
+  </template>
 
 <script>
 import { ref } from "vue";
+import Nav from "@/components/Nav";
 
 export default {
   name: "Home",
+  components: {Nav},
+
   setup() {
     const days = ref(0);
     const hours = ref(0);
@@ -322,4 +346,5 @@ export default {
 .bolder {
   font-family: Stargaze, sans-serif;
 }
+
 </style>
