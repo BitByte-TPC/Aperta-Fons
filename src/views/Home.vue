@@ -16,7 +16,15 @@
       </div>
       <p id="start">Starts in</p>
       <div class="timer">
-        <span><span>{{days}}</span> Days</span><span> <span>{{hours}}</span> Hours</span><span> <span>{{mins}}</span> Minutes</span><span> <span>{{secs}}</span> Seconds</span>
+        <span
+          ><span>{{ days }}</span> Days</span
+        ><span>
+          <span>{{ hours }}</span> Hours</span
+        ><span>
+          <span>{{ mins }}</span> Minutes</span
+        ><span>
+          <span>{{ secs }}</span> Seconds</span
+        >
       </div>
     </div>
   </div>
@@ -25,46 +33,86 @@
       <h1 class="about-heading">About</h1>
       <div class="about-content">
         <p>
-          Aperta Fons is a <span class="highlight">month-long open source event</span>, that is aimed at encouraging you towards
-          the world of open-source and taking the first step towards various open-source programs
-          like <span class="highlight">Outreachy, Google Summer of Code, MLH,</span> etc. This event is managed by BitByte,
-          The Programming Club and Google DSC of IIITDM Jabalpur.
+          Aperta Fons is a
+          <span class="highlight">month-long open source event</span>, that is
+          aimed at encouraging you towards the world of open-source and taking
+          the first step towards various open-source programs like
+          <span class="highlight">Outreachy, Google Summer of Code, MLH,</span>
+          etc. This event is managed by BitByte, The Programming Club and Google
+          DSC of IIITDM Jabalpur.
         </p>
         <p>
-          This event is aimed at matching you with open source, free software, and technology-related organizations to write code and become part of these communities. The organizations provide mentors who act as guides through the entire process, from learning about the community to contributing code.
+          This event is aimed at matching you with open source, free software,
+          and technology-related organizations to write code and become part of
+          these communities. The organizations provide mentors who act as guides
+          through the entire process, from learning about the community to
+          contributing code.
         </p>
         <p>
           The goals of our Event are to:
           <br />
-          - <span class="highlight">Inspire</span> you to begin participating in open source development.
+          - <span class="highlight">Inspire</span> you to begin participating in
+          open source development.
           <br />
-          - <span class="highlight">Identifying</span> open-source projects and bring in new developers.
+          - <span class="highlight">Identifying</span> open-source projects and
+          bring in new developers.
           <br />
-          - <span class="highlight">Provide</span> you the opportunity to do work and give you industry experience.
+          - <span class="highlight">Provide</span> you the opportunity to do
+          work and give you industry experience.
           <br />
-          - <span class="highlight">Give</span> you more exposure to real-world software development
+          - <span class="highlight">Give</span> you more exposure to real-world
+          software development
         </p>
+      </div>
+    </div>
+  </div>
+  <div class="prize-section">
+    <div class="prize">
+      <h1 class="prize-heading">
+        What's in it for you?
+      </h1>
+      <div class="prizes">
+        <div class="list">
+          <p>
+            &bull; <span class="bolder">TOP 20 CONTRIBUTER</span> can win
+            exclusive club t-shirts.
+          </p>
+          <p>
+            &bull;
+            <span class="bolder">EVERY CONTRIBUTER</span> who has got at least 3
+            easy-level and 1 medium-level PR merged to repositories with 100+⭐
+            will get exclusive club stickers.
+          </p>
+          <p style="margin: 0px; margin-bottom:10px">
+            <span class="bolder">NOT ENOUGH?</span>
+          </p>
+          <p style="margin: 0px">
+            &bull; All participants with at least 1 PR merged will get a
+            <span class="bolder"
+              >Google Developer Student Club certificate</span
+            >
+            for their participation in the event.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {ref} from "vue";
-
+import { ref } from "vue";
 
 export default {
-  name: 'Home',
-  setup(){
-    const days=ref(0)
-    const hours=ref(0)
-    const mins=ref(0)
-    const secs=ref(0)
+  name: "Home",
+  setup() {
+    const days = ref(0);
+    const hours = ref(0);
+    const mins = ref(0);
+    const secs = ref(0);
     const countDownDate = new Date("Sep 21, 2021 10:00:00").getTime();
 
-// Update the count down every 1 second
+    // Update the count down every 1 second
     const x = setInterval(function() {
-
       // Get today's date and time
       const now = new Date().getTime();
 
@@ -73,7 +121,9 @@ export default {
 
       // Time calculations for days, hours, minutes and seconds
       days.value = Math.floor(distance / (1000 * 60 * 60 * 24));
-      hours.value = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      hours.value = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       mins.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       secs.value = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -85,9 +135,9 @@ export default {
       }
     }, 1000);
 
-    return{days,hours,mins,secs}
-  }
-}
+    return { days, hours, mins, secs };
+  },
+};
 </script>
 
 <style scoped>
@@ -119,7 +169,7 @@ export default {
 }
 
 #subH {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 4.4vh;
   line-height: 5.2vh;
   color: #fff;
@@ -129,7 +179,7 @@ export default {
 }
 
 #text {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2.3vh;
   line-height: 3.3vh;
   color: #ffffff;
@@ -138,7 +188,7 @@ export default {
 }
 
 .button {
-  background: #3770FF;
+  background: #3770ff;
   border-radius: 8px;
   width: fit-content;
   margin-right: 5vw;
@@ -209,17 +259,17 @@ export default {
   padding: 10px 0;
 }
 .highlight {
-  padding:  0 3px;
+  padding: 0 3px;
   position: relative;
   background-color: #3770ff;
 }
-.timer{
+.timer {
   width: 45vw;
   display: flex;
   justify-content: space-between;
 }
-#start{
-  font-family: 'Poppins', sans-serif;
+#start {
+  font-family: "Poppins", sans-serif;
   font-size: 2vh;
   color: #ffffff;
   margin: 5vh 0 0 0;
@@ -227,11 +277,49 @@ export default {
 .timer span {
   font-size: 2vh;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.timer span span{
-  font-family: Stargaze,sans-serif;
+.timer span span {
+  font-family: Stargaze, sans-serif;
   color: #ffffff;
   font-size: 8vh;
+}
+.prize-section {
+  width: 100vw;
+  height: 100vh;
+  background-color: #3770ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.prize {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 80vw;
+  justify-content: space-evenly;
+}
+.prize-heading {
+  padding: 0;
+  margin: 0;
+  font-size: 5.6vw;
+  letter-spacing: 2px;
+  line-height: 7.36vw;
+  font-family: Stargaze, sans-serif;
+  color: #ffffff;
+}
+.list {
+  width: 70%;
+  margin: auto;
+  text-align: left;
+  color: #ffffff;
+}
+.list p {
+  line-height: 2.6vw;
+  font-size: 1.8vw;
+  font-family: Poppins, sans-serif;
+}
+.bolder {
+  font-family: Stargaze, sans-serif;
 }
 </style>
