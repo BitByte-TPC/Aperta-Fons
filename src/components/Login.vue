@@ -188,9 +188,30 @@ export default {
   font-size: 14px;
   line-height: 21px;
   text-align: left;
-
+  text-decoration: underline;
   color: #E8EEFF;
 
   cursor: pointer;
 }
+
+@media (max-width:900px) {
+  .signInGoogle{
+    width: initial;
+  }
+  .hvr-grow{
+    padding:0.4rem;
+  }
+  .signInGoogle img{
+    margin-left: 0px;
+  }
+  .signInGoogle span{
+    font-size:initial;
+    line-height: initial;
+    margin-right: initial;
+  }
+  .signInForm{
+    width: initial;
+  }
+}
+
 </style>

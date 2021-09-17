@@ -17,12 +17,12 @@
       <div class="buttonContainer">
         <router-link to="/auth" style="text-decoration: none; color: inherit;">
           <button class="button hvr-grow">
-            <img src="../assets/register.svg" alt="register"/>{{user ? "Dashboard" : "Register"}}
+            <img src="../assets/register.svg" alt="register"/><p>{{user ? "Dashboard" : "Register"}}</p>
           </button>
         </router-link>
-        <a href="https://discord.gg/rdQ9ezYE" style="text-decoration: none">
+        <a href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
           <button class="button hvr-grow">
-            <img src="../assets/discord.svg" alt="discord"/>Discord
+            <img src="../assets/discord.svg" alt="discord"/><p>Discord</p>
           </button>
         </a>
       </div>
@@ -220,13 +220,13 @@
           <button class="accordion-button bg-black collapsed" type="button" style="color: #ffffff"
                   data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
                   aria-controls="collapseSix">
-            How do I submit my pull requests on Event Website?
+            Do I need to pay to enter this event?
           </button>
         </h2>
         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>Head over to the Submit PR tab on your dashboard and fill the form accordingly.
+            <strong>Ans. </strong> No purchase/payment is necessary to participate or win in this event. It is free of cost.
           </div>
         </div>
       </div>
@@ -345,6 +345,10 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.buttonContainer button p{
+  margin-bottom: 0rem ;
 }
 
 .hvr-grow {
@@ -529,5 +533,94 @@ export default {
 
 .accordion-body {
   text-align: left;
+}
+
+@media(max-width:900px)
+{
+
+  .container[data-v-fae5bece] {
+    margin-left: 0px;
+    padding: 8rem 2rem 0 2rem;
+    text-align: center;
+  }
+  .home[data-v-fae5bece]{
+    height:initial;
+  }
+  #heading{
+    text-align: center;
+    font-size: 4rem;
+    line-height:initial;
+  }
+  #subH{
+    text-align: center;
+  }
+  #text{
+    text-align: center;
+  }
+  .buttonContainer{
+    margin: auto;
+  }
+  .buttonContainer button{
+    text-align: center;
+    width:8rem;
+  }
+  .buttonContainer button p{
+    margin: auto;
+    font-size:0.8rem;
+  }
+  .timer{
+    width: initial;
+  }
+  .timer span span{
+    font-size:3rem;
+  }
+  /* #sidebarMenu[data-v-65af85a3]{
+    width: 100%;
+  }
+  #sidebarMenuInner[data-v-65af85a3] li{
+    padding: 1rem;
+  } */
+
+  .about{
+    height:initial;
+  }
+  .about-heading{
+    margin: initial;
+    margin-top: 3rem;
+    font-size:3rem;
+
+  }
+  .about-content p{
+    font-size: 1rem;
+  }
+  .prize-section[data-v-fae5bece]{
+    height:initial;
+    padding: 4rem 1rem;
+  }
+  .prize-heading{
+    margin: initial;
+    font-size: 3rem;
+    line-height:initial;
+  }
+  .prizes .list{
+    width:initial;
+    margin-top: 3rem;
+    text-align:center;
+  }
+  .list p[data-v-fae5bece]{
+    font-size: 1rem;
+    line-height:initial;
+    margin-top: 30px;
+  }
+  .faq_head{
+    font-size: 3rem;
+  }
+  .accordion{
+    width: 80%;
+    margin: 2rem auto;
+  }
+  .accordion button{
+    font-size: 1rem;
+  }
 }
 </style>
