@@ -136,11 +136,7 @@
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>Participating in such events provides an amazing learning experience, helps in
-            improving your development skills, getting involved in big organizations and helping to build networks. This
-            is a great place to get you jump-started and up to speed with various industry-demanded technologies and
-            getting involved with some great Open Source communities.
-
+            <strong>Ans. </strong>Participating in such events provides an amazing learning experience, helps in improving your development skills, getting involved in big organizations and helping to build networks. This is a great place to get you jump-started and up to speed with various industry-demanded technologies and getting involved with some great Open Source communities.
           </div>
         </div>
       </div>
@@ -155,10 +151,7 @@
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong> Open source provides you first-hand experience with working on big and real-world
-            projects, on which many top companies depend, which will give a huge boost in your development career. Not
-            only this, but you also get to work with and learn from some of the most talented developers around the
-            world.
+            <strong>Ans. </strong> Open source provides you first-hand experience with working on big and real-world projects, on which many top companies depend, which will give a huge boost in your development career. Not only this, but you also get to work with and learn from some of the most talented developers around the world.
           </div>
         </div>
       </div>
@@ -173,8 +166,7 @@
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>Not directly, however, you will gain important experience which will surely help you
-            later down the road in this domain.
+            <strong>Ans. </strong>Contributing to some real world project will have a huge impact on your CV and you will gain some experience about how to work in a large organisation with hundreds of contributors. Though direct placement opportunities are rare, there are chances to get full time opportunities in the organisation you’re contributing for a long time. Mentors often recommend contributors to some startup companies or you might get to know people who work in FAANG companies which can help you later on when you apply to those companies with referral.
           </div>
         </div>
       </div>
@@ -219,7 +211,22 @@
         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>. Join our discord server (link here) and the mentors would be glad to help you there.
+            <strong>Ans. </strong>. Join our discord server (<a href="https://discord.gg/c3WWbdf983" style="color: #3770ff">click here to join</a>) and the mentors would be glad to help you there.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item bg-black">
+        <h2 class="accordion-header" id="headingSeven">
+          <button class="accordion-button bg-black collapsed" type="button" style="color: #ffffff"
+                  data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
+                  aria-controls="collapseSix">
+            How do I submit my pull requests on Event Website?
+          </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+             data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>Ans. </strong>Head over to the Submit PR tab on your dashboard and fill the form accordingly.
           </div>
         </div>
       </div>
