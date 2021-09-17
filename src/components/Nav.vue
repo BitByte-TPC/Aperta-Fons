@@ -48,8 +48,8 @@ body {
   position: fixed;
   z-index: 2;
   left: 0;
-  width: 30vw;
-  transform: translateX(-30vw);
+  width: max(30vw, 300px);
+  transform: translateX(min(-30vw, -300px));
   transition: transform 300ms ease-in-out;
   background: #3770ff;
 }

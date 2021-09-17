@@ -623,4 +623,10 @@ export default {
     font-size: 1rem;
   }
 }
+.accordion-button::after {
+  background-image: url("../assets/arrow-204-32.png");
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("../assets/arrow-204-32.png");
+}
 </style>
