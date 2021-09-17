@@ -1,12 +1,10 @@
 <template>
   <!--  Navigation Section-->
 
-
-  <Nav></Nav>
+  <Nav/>
 
 
   <!--  Landing Section-->
-
 
 
   <div class="home" id="home">
@@ -17,12 +15,14 @@
       <div class="buttonContainer">
         <router-link to="/auth" style="text-decoration: none; color: inherit;">
           <button class="button hvr-grow">
-            <img src="../assets/register.svg" alt="register"/><p>{{user ? "Dashboard" : "Register"}}</p>
+            <img src="../assets/register.svg" alt="register"/>
+            <p>{{ user ? "Dashboard" : "Register" }}</p>
           </button>
         </router-link>
         <a href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
           <button class="button hvr-grow">
-            <img src="../assets/discord.svg" alt="discord"/><p>Discord</p>
+            <img src="../assets/discord.svg" alt="discord"/>
+            <p>Discord</p>
           </button>
         </a>
       </div>
@@ -44,8 +44,8 @@
   <!--  About Section-->
 
 
-
   <div class="about-section" id="about">
+    <div id="particles-js"></div>
     <div class="about">
       <h1 class="about-heading">About</h1>
       <div class="about-content">
@@ -85,7 +85,6 @@
   </div>
 
   <!--  Prize Section-->
-
 
 
   <div class="prize-section" id="prize">
@@ -136,7 +135,10 @@
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>Participating in such events provides an amazing learning experience, helps in improving your development skills, getting involved in big organizations and helping to build networks. This is a great place to get you jump-started and up to speed with various industry-demanded technologies and getting involved with some great Open Source communities.
+            <strong>Ans. </strong>Participating in such events provides an amazing learning experience, helps in
+            improving your development skills, getting involved in big organizations and helping to build networks. This
+            is a great place to get you jump-started and up to speed with various industry-demanded technologies and
+            getting involved with some great Open Source communities.
           </div>
         </div>
       </div>
@@ -151,7 +153,10 @@
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong> Open source provides you first-hand experience with working on big and real-world projects, on which many top companies depend, which will give a huge boost in your development career. Not only this, but you also get to work with and learn from some of the most talented developers around the world.
+            <strong>Ans. </strong> Open source provides you first-hand experience with working on big and real-world
+            projects, on which many top companies depend, which will give a huge boost in your development career. Not
+            only this, but you also get to work with and learn from some of the most talented developers around the
+            world.
           </div>
         </div>
       </div>
@@ -166,7 +171,12 @@
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>Contributing to some real world project will have a huge impact on your CV and you will gain some experience about how to work in a large organisation with hundreds of contributors. Though direct placement opportunities are rare, there are chances to get full time opportunities in the organisation you’re contributing for a long time. Mentors often recommend contributors to some startup companies or you might get to know people who work in FAANG companies which can help you later on when you apply to those companies with referral.
+            <strong>Ans. </strong>Contributing to some real world project will have a huge impact on your CV and you
+            will gain some experience about how to work in a large organisation with hundreds of contributors. Though
+            direct placement opportunities are rare, there are chances to get full time opportunities in the
+            organisation you’re contributing for a long time. Mentors often recommend contributors to some startup
+            companies or you might get to know people who work in FAANG companies which can help you later on when you
+            apply to those companies with referral.
           </div>
         </div>
       </div>
@@ -181,7 +191,8 @@
         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>No, team participation is not allowed in this event. Everyone must participate individually. But you can collaborate with each other if contributing to the same organization.
+            <strong>Ans. </strong>No, team participation is not allowed in this event. Everyone must participate
+            individually. But you can collaborate with each other if contributing to the same organization.
           </div>
         </div>
       </div>
@@ -211,7 +222,9 @@
         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>. Join our discord server (<a href="https://discord.gg/c3WWbdf983" style="color: #3770ff">click here to join</a>) and the mentors would be glad to help you there.
+            <strong>Ans. </strong>Join our discord server (<a href="https://discord.gg/c3WWbdf983"
+                                                                style="color: #3770ff">click here to join</a>) and the
+            mentors would be glad to help you there.
           </div>
         </div>
       </div>
@@ -226,7 +239,8 @@
         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong> No purchase/payment is necessary to participate or win in this event. It is free of cost.
+            <strong>Ans. </strong> No purchase/payment is necessary to participate or win in this event. It is free of
+            cost.
           </div>
         </div>
       </div>
@@ -244,6 +258,118 @@ import {projectAuth} from "@/firebase/config";
 export default {
   name: "Home",
   components: {Nav},
+  mounted() {
+    this.initParticles()
+  },
+  methods: {
+    initParticles() {
+      window.particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 700
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      })
+    }
+  },
 
   setup() {
 
@@ -347,8 +473,8 @@ export default {
   cursor: pointer;
 }
 
-.buttonContainer button p{
-  margin-bottom: 0rem ;
+.buttonContainer button p {
+  margin-bottom: 0;
 }
 
 .hvr-grow {
@@ -535,98 +661,117 @@ export default {
   text-align: left;
 }
 
-@media(max-width:900px)
-{
+@media (max-width: 900px) {
 
   .container {
-    margin-left: 0px;
+    margin-left: 0;
     padding: 8rem 2rem 0 2rem;
     text-align: center;
   }
-  .home{
-    height:initial;
+
+  .home {
+    height: initial;
   }
-  #heading{
+
+  #heading {
     text-align: center;
     font-size: 4rem;
-    line-height:initial;
+    line-height: initial;
   }
-  #subH{
+
+  #subH {
     text-align: center;
   }
-  #text{
+
+  #text {
     text-align: center;
   }
-  .buttonContainer{
+
+  .buttonContainer {
     margin: auto;
   }
-  .buttonContainer button{
+
+  .buttonContainer button {
     text-align: center;
-    width:8rem;
+    width: 8rem;
   }
-  .buttonContainer button p{
+
+  .buttonContainer button p {
     margin: auto;
-    font-size:0.8rem;
+    font-size: 0.8rem;
   }
-  .timer{
+
+  .timer {
     width: initial;
   }
-  .timer span span{
-    font-size:3rem;
-  }
-  /* #sidebarMenu[data-v-65af85a3]{
-    width: 100%;
-  }
-  #sidebarMenuInner[data-v-65af85a3] li{
-    padding: 1rem;
-  } */
 
-  .about{
-    height:initial;
+  .timer span span {
+    font-size: 3rem;
   }
-  .about-heading{
+
+  .about {
+    height: initial;
+  }
+
+  .about-heading {
     margin: initial;
     margin-top: 3rem;
-    font-size:3rem;
+    font-size: 3rem;
 
   }
-  .about-content p{
+
+  .about-content p {
     font-size: 1rem;
   }
-  .prize-section{
-    height:initial;
+
+  .prize-section {
+    height: initial;
     padding: 4rem 1rem;
   }
-  .prize-heading{
+
+  .prize-heading {
     margin: initial;
     font-size: 3rem;
-    line-height:initial;
+    line-height: initial;
   }
-  .prizes .list{
-    width:initial;
+
+  .prizes .list {
+    width: initial;
     margin-top: 3rem;
-    text-align:center;
+    text-align: center;
   }
-  .list p{
+
+  .list p {
     font-size: 1rem;
-    line-height:initial;
+    line-height: initial;
     margin-top: 30px;
   }
-  .faq_head{
+
+  .faq_head {
     font-size: 3rem;
   }
-  .accordion{
+
+  .accordion {
     width: 80%;
     margin: 2rem auto;
   }
-  .accordion button{
+
+  .accordion button {
     font-size: 1rem;
   }
 }
+
 .accordion-button::after {
   background-image: url("../assets/arrow-204-32.png");
 }
+
 .accordion-button:not(.collapsed)::after {
   background-image: url("../assets/arrow-204-32.png");
+}
+
+#particles-js {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
