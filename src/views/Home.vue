@@ -627,6 +627,7 @@ export default {
   font-family: Stargaze, serif;
   font-size: 6vw;
   margin: 0;
+  text-align: center;
   padding-top: 7vh;
   color: #ffffff;
 }
