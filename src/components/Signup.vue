@@ -200,21 +200,21 @@ export default {
 }
 
 @media (max-width:900px) {
-  .signInGoogle[data-v-64e46970]{
+  .signInGoogle{
     width: initial;
   }
-  .hvr-grow[data-v-64e46970]{
+  .hvr-grow{
     padding:0.4rem;
   }
-  .signInGoogle img[data-v-64e46970]{
+  .signInGoogle img{
     margin-left: 0px;
   }
-  .signInGoogle span[data-v-64e46970]{
+  .signInGoogle span{
     font-size:initial;
     line-height: initial;
     margin-right: initial;
   }
-  .signUpForm[data-v-64e46970]{
+  .signUpForm{
     width: initial;
   }
 }
