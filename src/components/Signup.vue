@@ -186,7 +186,7 @@ export default {
 .signUpForm p {
   width: 90%;
   margin: 0;
-
+  text-decoration: underline;
   font-family: Poppins, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -197,5 +197,25 @@ export default {
   color: #E8EEFF;
 
   cursor: pointer;
+}
+
+@media (max-width:900px) {
+  .signInGoogle[data-v-64e46970]{
+    width: initial;
+  }
+  .hvr-grow[data-v-64e46970]{
+    padding:0.4rem;
+  }
+  .signInGoogle img[data-v-64e46970]{
+    margin-left: 0px;
+  }
+  .signInGoogle span[data-v-64e46970]{
+    font-size:initial;
+    line-height: initial;
+    margin-right: initial;
+  }
+  .signUpForm[data-v-64e46970]{
+    width: initial;
+  }
 }
 </style>

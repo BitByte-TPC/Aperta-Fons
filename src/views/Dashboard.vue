@@ -94,7 +94,7 @@ export default {
 .content {
   height: 90vh;
   width: 100vw;
-
+  padding: 1rem; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -133,6 +133,16 @@ export default {
   align-items: center;
 }
 
-
+@media(max-width:900px){
+  .navi span{
+    font-size: initial;
+  }
+  .navi button{
+    font-size:initial;
+  }
+  .joke-box button{
+    font-size: initial;
+  }
+}
 
 </style>

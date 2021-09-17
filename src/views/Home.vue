@@ -20,7 +20,7 @@
             <img src="../assets/register.svg" alt="register"/><p>{{user ? "Dashboard" : "Register"}}</p>
           </button>
         </router-link>
-        <a href="https://discord.gg/rdQ9ezYE" style="text-decoration: none">
+        <a href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
           <button class="button hvr-grow">
             <img src="../assets/discord.svg" alt="discord"/><p>Discord</p>
           </button>
@@ -220,13 +220,13 @@
           <button class="accordion-button bg-black collapsed" type="button" style="color: #ffffff"
                   data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
                   aria-controls="collapseSix">
-            How do I submit my pull requests on Event Website?
+            Do I need to pay to enter this event?
           </button>
         </h2>
         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
              data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <strong>Ans. </strong>Head over to the Submit PR tab on your dashboard and fill the form accordingly.
+            <strong>Ans. </strong> No purchase/payment is necessary to participate or win in this event. It is free of cost.
           </div>
         </div>
       </div>
@@ -608,6 +608,16 @@ export default {
     font-size: 1rem;
     line-height:initial;
     margin-top: 30px;
+  }
+  .faq_head{
+    font-size: 3rem;
+  }
+  .accordion{
+    width: 80%;
+    margin: 2rem auto;
+  }
+  .accordion button{
+    font-size: 0.7rem;
   }
 }
 </style>
