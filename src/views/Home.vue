@@ -571,6 +571,9 @@ export default {
   .timer{
     width: initial;
   }
+  .timer span span{
+    font-size:3rem;
+  }
   /* #sidebarMenu[data-v-65af85a3]{
     width: 100%;
   }
