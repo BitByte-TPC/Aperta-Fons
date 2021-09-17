@@ -537,10 +537,14 @@ export default {
 
 @media(max-width:900px)
 {
+
   .container[data-v-fae5bece] {
     margin-left: 0px;
     padding: 8rem 2rem 0 2rem;
     text-align: center;
+  }
+  .home[data-v-fae5bece]{
+    height:initial;
   }
   #heading{
     text-align: center;
@@ -579,13 +583,31 @@ export default {
   }
   .about-heading{
     margin: initial;
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size:3rem;
-    line-height:initial;
+
   }
   .about-content p{
     font-size: 1rem;
   }
-
+  .prize-section[data-v-fae5bece]{
+    height:initial;
+    padding: 4rem 1rem;
+  }
+  .prize-heading{
+    margin: initial;
+    font-size: 3rem;
+    line-height:initial;
+  }
+  .prizes .list{
+    width:initial;
+    margin-top: 3rem;
+    text-align:center;
+  }
+  .list p[data-v-fae5bece]{
+    font-size: 1rem;
+    line-height:initial;
+    margin-top: 30px;
+  }
 }
 </style>
