@@ -617,7 +617,7 @@ export default {
     margin: 2rem auto;
   }
   .accordion button{
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 }
 </style>
