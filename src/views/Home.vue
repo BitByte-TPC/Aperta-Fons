@@ -17,12 +17,12 @@
       <div class="buttonContainer">
         <router-link to="/auth" style="text-decoration: none; color: inherit;">
           <button class="button hvr-grow">
-            <img src="../assets/register.svg" alt="register"/>{{user ? "Dashboard" : "Register"}}
+            <img src="../assets/register.svg" alt="register"/><p>{{user ? "Dashboard" : "Register"}}</p>
           </button>
         </router-link>
         <a href="https://discord.gg/rdQ9ezYE" style="text-decoration: none">
           <button class="button hvr-grow">
-            <img src="../assets/discord.svg" alt="discord"/>Discord
+            <img src="../assets/discord.svg" alt="discord"/><p>Discord</p>
           </button>
         </a>
       </div>
@@ -340,6 +340,10 @@ export default {
   cursor: pointer;
 }
 
+.buttonContainer button p{
+  margin-bottom: 0rem ;
+}
+
 .hvr-grow {
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -522,5 +526,59 @@ export default {
 
 .accordion-body {
   text-align: left;
+}
+
+@media(max-width:900px)
+{
+  .container[data-v-fae5bece] {
+    margin-left: 0px;
+    padding: 8rem 2rem 0 2rem;
+    text-align: center;
+  }
+  #heading{
+    text-align: center;
+    font-size: 4rem;
+    line-height:initial;
+  }
+  #subH{
+    text-align: center;
+  }
+  #text{
+    text-align: center;
+  }
+  .buttonContainer{
+    margin: auto;
+  }
+  .buttonContainer button{
+    text-align: center;
+    width:8rem;
+  }
+  .buttonContainer button p{
+    margin: auto;
+    font-size:0.8rem;
+  }
+  .timer{
+    width: initial;
+  }
+  /* #sidebarMenu[data-v-65af85a3]{
+    width: 100%;
+  }
+  #sidebarMenuInner[data-v-65af85a3] li{
+    padding: 1rem;
+  } */
+
+  .about{
+    height:initial;
+  }
+  .about-heading{
+    margin: initial;
+    margin-top: 4rem;
+    font-size:3rem;
+    line-height:initial;
+  }
+  .about-content p{
+    font-size: 1rem;
+  }
+
 }
 </style>
