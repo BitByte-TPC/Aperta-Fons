@@ -54,7 +54,7 @@
           <span class="highlight">month-long open source event</span>, that is
           aimed at encouraging you towards the world of open-source and taking
           the first step towards licentious open-source programs like
-          <span class="highlight">Outreach, Google Summer of Code, MLH,</span>
+          <span class="highlight">Outreachy, Google Summer of Code, MLH,</span>
           etc. This event is managed by BitByte, The Programming Club and Google
           DSC of IIITDM Jabalpur.
         </p>
