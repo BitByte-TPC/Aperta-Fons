@@ -1,5 +1,6 @@
 <template>
-  <router-view/>
+  <PreLoader v-if="!spin"/>
+  <router-view v-if="spin"/>
 </template>
 
 <style>
@@ -11,10 +12,17 @@
   src: url('./assets/fonts/StargazeStencil.otf');
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: #2c3e50;
-  overflow-x: hidden;
-}
 </style>
+<script>
+import PreLoader from "@/components/PreLoader";
+import {ref} from "vue";
+
+export default {
+  components: {PreLoader},
+  setup() {
+    const spin = ref(false)
+    setTimeout(() => spin.value = true, 3000)
+    return {spin}
+  }
+}
+</script>
