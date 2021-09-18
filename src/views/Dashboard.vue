@@ -2,56 +2,135 @@
   <div class="navi">
     <span>Dashboard</span>
     <div class="inner">
-      <router-link to="/" style="text-decoration: none; color: inherit;"><span>Home</span></router-link>
+      <router-link to="/" style="text-decoration: none; color: inherit;"
+        ><span>Home</span></router-link
+      >
       <button @click="handleLogout">Logout</button>
     </div>
   </div>
-  <div class="content">
+  <div v-if="!started" class="content">
     <div class="joke-box">
-      <p>Glad to see you here, but the challenge hasn't started yet.<br />Here is a programming joke for you...</p>
-      <p><b>{{joke}}</b></p>
+      <p>
+        Glad to see you here, but the challenge hasn't started yet.<br />Here is
+        a programming joke for you...
+      </p>
+      <p>
+        <b>{{ joke }}</b>
+      </p>
       <button @click="getJoke" class="bold">Another joke?</button>
+    </div>
+  </div>
+  <div v-if="started" class="pr-outer">
+    <div class="pr-container">
+      <div class="table-heading">
+        <div class="heading1"><span>Name</span></div>
+        <div class="heading2"><span>Merged PR</span></div>
+        <div class="heading3"><span>Latest PR</span></div>
+        <div class="heading4"><span>Open PRs</span></div>
+      </div>
+      <div class="table-content">
+        <div class="heading1"><span>Pulkit</span></div>
+        <div class="heading2"><span>22</span></div>
+        <div class="heading3">
+          <span>feat: docs now support search feature </span>
+        </div>
+        <div class="heading4"><span>2</span></div>
+      </div>
+      <div class="table-content">
+        <div class="heading1"><span>Pulkit</span></div>
+        <div class="heading2"><span>22</span></div>
+        <div class="heading3">
+          <span>feat: docs now support search feature </span>
+        </div>
+        <div class="heading4"><span>2</span></div>
+      </div>
+      <div class="table-content">
+        <div class="heading1"><span>Pulkit</span></div>
+        <div class="heading2"><span>22</span></div>
+        <div class="heading3">
+          <span>feat: docs now support search feature </span>
+        </div>
+        <div class="heading4"><span>2</span></div>
+      </div>
+      <div class="table-content">
+        <div class="heading1"><span>Pulkit</span></div>
+        <div class="heading2"><span>22</span></div>
+        <div class="heading3">
+          <span>feat: docs now support search feature </span>
+        </div>
+        <div class="heading4"><span>2</span></div>
+      </div>
+      <div class="table-content">
+        <div class="heading1"><span>Pulkit</span></div>
+        <div class="heading2"><span>22</span></div>
+        <div class="heading3">
+          <span>feat: docs now support search feature </span>
+        </div>
+        <div class="heading4"><span>2</span></div>
+      </div>
+      <div class="table-content">
+        <div class="heading1"><span>Pulkit</span></div>
+        <div class="heading2"><span>22</span></div>
+        <div class="heading3">
+          <span>feat: docs now support search feature </span>
+        </div>
+        <div class="heading4"><span>2</span></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import useLogout from "@/composables/useLogout";
-import {useRouter} from "vue-router";
-import {ref} from "vue";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
 import axios from "axios";
 
 export default {
   name: "Dashboard",
+  data() {
+    return {
+      items: [
+        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
+        { age: 21, first_name: "Larsen", last_name: "Shaw" },
+        { age: 89, first_name: "Geneva", last_name: "Wilson" },
+        { age: 38, first_name: "Jami", last_name: "Carney" },
+      ],
+    };
+  },
   setup() {
-    const { error, logout} = useLogout()
-    const router = useRouter()
+    const { error, logout } = useLogout();
+    const router = useRouter();
 
-    const joke = ref("")
+    const joke = ref("");
+    const started = ref(true);
 
-    axios.get("https://v2.jokeapi.dev/joke/Programming?type=single").then((res) => {
-      joke.value = res.data.joke
-    })
+    axios
+      .get("https://v2.jokeapi.dev/joke/Programming?type=single")
+      .then((res) => {
+        joke.value = res.data.joke;
+      });
 
     const getJoke = () => {
-      axios.get("https://v2.jokeapi.dev/joke/Programming?type=single").then((res) => {
-        joke.value = res.data.joke
-      })
-    }
+      axios
+        .get("https://v2.jokeapi.dev/joke/Programming?type=single")
+        .then((res) => {
+          joke.value = res.data.joke;
+        });
+    };
 
     const handleLogout = () => {
-      logout()
-      if(!error.value) {
-        router.push({name: "Home"})
+      logout();
+      if (!error.value) {
+        router.push({ name: "Home" });
+      } else {
+        console.log(error.value);
       }
-      else {
-        console.log(error.value)
-      }
-    }
+    };
 
-    return { handleLogout, joke, getJoke }
-  }
-}
+    return { handleLogout, joke, getJoke, started };
+  },
+};
 </script>
 
 <style scoped>
@@ -63,7 +142,7 @@ export default {
   align-items: center;
   border-bottom: 2px solid rgba(4, 50, 94, 0.2);
 
-  background: #F0F0F3;
+  background: #f0f0f3;
 }
 .navi span {
   margin: 0 3vw;
@@ -74,10 +153,10 @@ export default {
   font-size: 28px;
   line-height: 48px;
 
-  color: #04325E;
+  color: #04325e;
 }
 .navi button {
-  background: #3770FF;
+  background: #3770ff;
   border-radius: 8px;
   width: fit-content;
   margin: 1vh 3vw;
@@ -94,13 +173,13 @@ export default {
 .content {
   height: 90vh;
   width: 100vw;
-  padding: 1rem; 
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  background: #F0F0F3;
+  background: #f0f0f3;
 }
 .joke-box {
   padding-bottom: 20vh;
@@ -109,7 +188,7 @@ export default {
   align-items: center;
 }
 .joke-box button {
-  background: #3770FF;
+  background: #3770ff;
   border-radius: 8px;
   width: fit-content;
   margin: 1vh 3vw;
@@ -124,7 +203,7 @@ export default {
   cursor: pointer;
 }
 .joke-box p {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2vh;
   line-height: 3vh;
 }
@@ -133,16 +212,60 @@ export default {
   align-items: center;
 }
 
-@media(max-width:900px){
-  .navi span{
+.pr-outer {
+  background: #f0f0f3;
+  min-height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-container {
+  min-height: 80vh;
+  max-width: 80vw;
+  margin: 40px auto;
+  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+  border-radius: 16px;
+}
+
+.table-heading {
+  display: grid;
+  background: #eaeaef;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  padding: 25px 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 1.53vw;
+  color: #04325e;
+  border-bottom: 1px solid #04325e;
+}
+
+.table-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  padding: 25px 0;
+  font-weight: 400;
+  font-size: 1.38vw;
+  color: #04325e;
+}
+
+.heading3 {
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .navi span {
     font-size: initial;
   }
-  .navi button{
-    font-size:initial;
+  .navi button {
+    font-size: initial;
   }
-  .joke-box button{
+  .joke-box button {
     font-size: initial;
   }
 }
-
 </style>
