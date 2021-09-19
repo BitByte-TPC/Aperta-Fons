@@ -103,7 +103,7 @@ export default {
     const router = useRouter();
 
     const joke = ref("");
-    const started = ref(true);
+    const started = ref(false);
 
     axios
       .get("https://v2.jokeapi.dev/joke/Programming?type=single")
