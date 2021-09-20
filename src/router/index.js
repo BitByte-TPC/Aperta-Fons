@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Auth from "@/views/Auth";
 import {projectAuth} from "@/firebase/config";
 import Dashboard from "@/views/Dashboard";
+import SubmitPR from "@/views/SubmitPR";
 
 const requireAuth = (to, from, next) => {
   let user = projectAuth.currentUser
@@ -40,6 +41,12 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/submit',
+    name: 'Submit',
+    component: SubmitPR,
     beforeEnter: requireAuth
   }
 ]
