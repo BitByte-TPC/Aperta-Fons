@@ -2,9 +2,12 @@
   <div class="navi">
     <span>Dashboard</span>
     <div class="inner">
-      <router-link to="/" style="text-decoration: none; color: inherit;"
-        ><span>Home</span></router-link
-      >
+      <router-link to="/" style="text-decoration: none; color: inherit;">
+        <button>Home</button>
+      </router-link>
+      <router-link to="/submit" style="text-decoration: none; color: inherit;">
+        <button>Submit PR</button>
+      </router-link>
       <button @click="handleLogout">Logout</button>
     </div>
   </div>
@@ -103,7 +106,7 @@ export default {
     const router = useRouter();
 
     const joke = ref("");
-    const started = ref(false);
+    const started = ref(true);
 
     axios
       .get("https://v2.jokeapi.dev/joke/Programming?type=single")
@@ -155,11 +158,14 @@ export default {
 
   color: #04325e;
 }
+.inner {
+  margin: 0 2vw;
+}
 .navi button {
   background: #3770ff;
   border-radius: 8px;
   width: fit-content;
-  margin: 1vh 3vw;
+  margin: 1vh 1vw;
   font-size: 1.2vw;
   padding: 1vh 2.5vw;
   color: #ffffff;
