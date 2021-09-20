@@ -5,7 +5,7 @@ const getCollection = (collection) => {
     const documents = ref(null)
     const error = ref(null)
 
-    let collectionRef = projectFirestore.collection(collection).orderBy("score")
+    let collectionRef = projectFirestore.collection(collection).orderBy("time")
 
     const unsub = collectionRef.onSnapshot((snap) => {
         let results = []

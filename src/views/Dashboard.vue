@@ -14,7 +14,7 @@
   <div v-if="!started" class="content">
     <div class="joke-box">
       <p>
-        Glad to see you here, but the challenge hasn't started yet.<br />Here is
+        Glad to see you here, but the challenge hasn't started yet.<br/>Here is
         a programming joke for you...
       </p>
       <p>
@@ -27,57 +27,17 @@
     <div class="pr-container">
       <div class="table-heading">
         <div class="heading1"><span>Name</span></div>
-        <div class="heading2"><span>Merged PR</span></div>
         <div class="heading3"><span>Latest PR</span></div>
-        <div class="heading4"><span>Open PRs</span></div>
+        <div class="heading4"><span>Time Added</span></div>
       </div>
-      <div class="table-content">
-        <div class="heading1"><span>Pulkit</span></div>
-        <div class="heading2"><span>22</span></div>
-        <div class="heading3">
-          <span>feat: docs now support search feature </span>
+      <div v-for="doc in formattedDocuments" :key="doc.id">
+        <div class="table-content">
+          <div class="heading1"><span>{{ doc.displayName }}</span></div>
+          <div class="heading3">
+            <span><a :href="doc.link">{{ doc.message }}</a> </span>
+          </div>
+          <div class="heading4"><span>{{ doc.time }}</span></div>
         </div>
-        <div class="heading4"><span>2</span></div>
-      </div>
-      <div class="table-content">
-        <div class="heading1"><span>Pulkit</span></div>
-        <div class="heading2"><span>22</span></div>
-        <div class="heading3">
-          <span>feat: docs now support search feature </span>
-        </div>
-        <div class="heading4"><span>2</span></div>
-      </div>
-      <div class="table-content">
-        <div class="heading1"><span>Pulkit</span></div>
-        <div class="heading2"><span>22</span></div>
-        <div class="heading3">
-          <span>feat: docs now support search feature </span>
-        </div>
-        <div class="heading4"><span>2</span></div>
-      </div>
-      <div class="table-content">
-        <div class="heading1"><span>Pulkit</span></div>
-        <div class="heading2"><span>22</span></div>
-        <div class="heading3">
-          <span>feat: docs now support search feature </span>
-        </div>
-        <div class="heading4"><span>2</span></div>
-      </div>
-      <div class="table-content">
-        <div class="heading1"><span>Pulkit</span></div>
-        <div class="heading2"><span>22</span></div>
-        <div class="heading3">
-          <span>feat: docs now support search feature </span>
-        </div>
-        <div class="heading4"><span>2</span></div>
-      </div>
-      <div class="table-content">
-        <div class="heading1"><span>Pulkit</span></div>
-        <div class="heading2"><span>22</span></div>
-        <div class="heading3">
-          <span>feat: docs now support search feature </span>
-        </div>
-        <div class="heading4"><span>2</span></div>
       </div>
     </div>
   </div>
@@ -85,53 +45,65 @@
 
 <script>
 import useLogout from "@/composables/useLogout";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
+import {useRouter} from "vue-router";
+import {computed, ref} from "vue";
 import axios from "axios";
+import {formatDistanceToNow} from 'date-fns'
+import getCollection from "../composables/getCollection";
 
 export default {
   name: "Dashboard",
   data() {
     return {
       items: [
-        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
-        { age: 21, first_name: "Larsen", last_name: "Shaw" },
-        { age: 89, first_name: "Geneva", last_name: "Wilson" },
-        { age: 38, first_name: "Jami", last_name: "Carney" },
+        {age: 40, first_name: "Dickerson", last_name: "Macdonald"},
+        {age: 21, first_name: "Larsen", last_name: "Shaw"},
+        {age: 89, first_name: "Geneva", last_name: "Wilson"},
+        {age: 38, first_name: "Jami", last_name: "Carney"},
       ],
     };
   },
   setup() {
-    const { error, logout } = useLogout();
+    const {error, logout} = useLogout();
     const router = useRouter();
+    const {documents} = getCollection('dashboard')
 
     const joke = ref("");
     const started = ref(true);
 
     axios
-      .get("https://v2.jokeapi.dev/joke/Programming?type=single")
-      .then((res) => {
-        joke.value = res.data.joke;
-      });
-
-    const getJoke = () => {
-      axios
         .get("https://v2.jokeapi.dev/joke/Programming?type=single")
         .then((res) => {
           joke.value = res.data.joke;
         });
+
+    const getJoke = () => {
+      axios
+          .get("https://v2.jokeapi.dev/joke/Programming?type=single")
+          .then((res) => {
+            joke.value = res.data.joke;
+          });
     };
 
     const handleLogout = () => {
       logout();
       if (!error.value) {
-        router.push({ name: "Home" });
+        router.push({name: "Home"});
       } else {
         console.log(error.value);
       }
     };
 
-    return { handleLogout, joke, getJoke, started };
+    const formattedDocuments = computed(() => {
+      if (documents.value) {
+        return documents.value.map((doc) => {
+          let time = formatDistanceToNow(doc.time.toDate())
+          return {...doc, time: time}
+        }).slice(0, 10)
+      }
+    })
+
+    return {handleLogout, joke, getJoke, started, formattedDocuments};
   },
 };
 </script>
@@ -147,6 +119,7 @@ export default {
 
   background: #f0f0f3;
 }
+
 .navi span {
   margin: 0 3vw;
 
@@ -158,9 +131,11 @@ export default {
 
   color: #04325e;
 }
+
 .inner {
   margin: 0 2vw;
 }
+
 .navi button {
   background: #3770ff;
   border-radius: 8px;
@@ -176,6 +151,7 @@ export default {
   outline: none;
   cursor: pointer;
 }
+
 .content {
   height: 90vh;
   width: 100vw;
@@ -187,12 +163,14 @@ export default {
 
   background: #f0f0f3;
 }
+
 .joke-box {
   padding-bottom: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .joke-box button {
   background: #3770ff;
   border-radius: 8px;
@@ -208,11 +186,13 @@ export default {
   outline: none;
   cursor: pointer;
 }
+
 .joke-box p {
   font-family: "Poppins", sans-serif;
   font-size: 2vh;
   line-height: 3vh;
 }
+
 .inner {
   display: flex;
   align-items: center;
@@ -237,7 +217,7 @@ export default {
 .table-heading {
   display: grid;
   background: #eaeaef;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 0px;
   padding: 25px 0;
   border-top-left-radius: 15px;
@@ -251,7 +231,7 @@ export default {
 
 .table-content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 0px;
   padding: 25px 0;
   font-weight: 400;
@@ -263,13 +243,20 @@ export default {
   text-align: left;
 }
 
+.heading3 a {
+  text-decoration: none;
+  color: #04325e;
+}
+
 @media (max-width: 900px) {
   .navi span {
     font-size: initial;
   }
+
   .navi button {
     font-size: initial;
   }
+
   .joke-box button {
     font-size: initial;
   }
