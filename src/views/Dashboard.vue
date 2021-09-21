@@ -14,7 +14,7 @@
   <div v-if="!started" class="content">
     <div class="joke-box">
       <p>
-        Glad to see you here, but the challenge hasn't started yet.<br/>Here is
+        Glad to see you here, but the challenge hasn't started yet.<br />Here is
         a programming joke for you...
       </p>
       <p>
@@ -32,11 +32,17 @@
       </div>
       <div v-for="doc in formattedDocuments" :key="doc.id">
         <div class="table-content">
-          <div class="heading1"><span>{{ doc.displayName }}</span></div>
-          <div class="heading3">
-            <span><a :href="doc.link">{{ doc.message }}</a> </span>
+          <div class="heading1">
+            <span>{{ doc.displayName }}</span>
           </div>
-          <div class="heading4"><span>{{ doc.time }}</span></div>
+          <div class="heading3">
+            <span
+              ><a :href="doc.link">{{ doc.message }}</a>
+            </span>
+          </div>
+          <div class="heading4">
+            <span>{{ doc.time }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -45,10 +51,10 @@
 
 <script>
 import useLogout from "@/composables/useLogout";
-import {useRouter} from "vue-router";
-import {computed, ref} from "vue";
+import { useRouter } from "vue-router";
+import { computed, ref } from "vue";
 import axios from "axios";
-import {formatDistanceToNow} from 'date-fns'
+import { formatDistanceToNow } from "date-fns";
 import getCollection from "../composables/getCollection";
 
 export default {
@@ -56,39 +62,39 @@ export default {
   data() {
     return {
       items: [
-        {age: 40, first_name: "Dickerson", last_name: "Macdonald"},
-        {age: 21, first_name: "Larsen", last_name: "Shaw"},
-        {age: 89, first_name: "Geneva", last_name: "Wilson"},
-        {age: 38, first_name: "Jami", last_name: "Carney"},
+        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
+        { age: 21, first_name: "Larsen", last_name: "Shaw" },
+        { age: 89, first_name: "Geneva", last_name: "Wilson" },
+        { age: 38, first_name: "Jami", last_name: "Carney" },
       ],
     };
   },
   setup() {
-    const {error, logout} = useLogout();
+    const { error, logout } = useLogout();
     const router = useRouter();
-    const {documents} = getCollection('dashboard')
+    const { documents } = getCollection("dashboard");
 
     const joke = ref("");
     const started = ref(true);
 
     axios
+      .get("https://v2.jokeapi.dev/joke/Programming?type=single")
+      .then((res) => {
+        joke.value = res.data.joke;
+      });
+
+    const getJoke = () => {
+      axios
         .get("https://v2.jokeapi.dev/joke/Programming?type=single")
         .then((res) => {
           joke.value = res.data.joke;
         });
-
-    const getJoke = () => {
-      axios
-          .get("https://v2.jokeapi.dev/joke/Programming?type=single")
-          .then((res) => {
-            joke.value = res.data.joke;
-          });
     };
 
     const handleLogout = () => {
       logout();
       if (!error.value) {
-        router.push({name: "Home"});
+        router.push({ name: "Home" });
       } else {
         console.log(error.value);
       }
@@ -96,14 +102,16 @@ export default {
 
     const formattedDocuments = computed(() => {
       if (documents.value) {
-        return documents.value.map((doc) => {
-          let time = formatDistanceToNow(doc.time.toDate())
-          return {...doc, time: time}
-        }).slice(0, 10)
+        return documents.value
+          .map((doc) => {
+            let time = formatDistanceToNow(doc.time.toDate());
+            return { ...doc, time: time };
+          })
+          .slice(0, 10);
       }
-    })
+    });
 
-    return {handleLogout, joke, getJoke, started, formattedDocuments};
+    return { handleLogout, joke, getJoke, started, formattedDocuments };
   },
 };
 </script>
@@ -227,6 +235,7 @@ export default {
   font-size: 1.53vw;
   color: #04325e;
   border-bottom: 1px solid #04325e;
+  text-align: center;
 }
 
 .table-content {
@@ -237,6 +246,7 @@ export default {
   font-weight: 400;
   font-size: 1.38vw;
   color: #04325e;
+  text-align: center;
 }
 
 .heading3 {
