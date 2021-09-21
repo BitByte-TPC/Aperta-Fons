@@ -21,6 +21,8 @@
 import {ref} from "vue";
 import useSignup from "../composables/useSignup";
 import useSignInGoogle from "../composables/useSignInGoogle";
+import {projectAuth} from "@/firebase/config";
+import addUsers from "@/composables/addUsers";
 
 export default {
   name: "Signup",
@@ -32,13 +34,19 @@ export default {
     const loading = ref(null)
 
     const { error, signup } = useSignup()
-
+    const { e, addDoc} = addUsers("Users")
 
     const handleSubmit = async () => {
       loading.value = true
       await signup(email.value, password.value, displayName.value)
       if (!error.value) {
         loading.value = false
+        const user = projectAuth.currentUser
+        const data = user.providerData[0]
+        await addDoc({...data, score: 0})
+
+        console.log(data)
+
         context.emit('login')
       }
     }
@@ -48,6 +56,11 @@ export default {
     const handleGoogleSubmit = async () => {
       await googleLogin()
       if (!err.value) {
+        const user = projectAuth.currentUser
+        const data = user.providerData[0]
+        await addDoc({...data, score: 0})
+
+        console.log(data)
         context.emit('login')
       } else {
         console.log(err.value)
