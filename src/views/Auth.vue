@@ -13,7 +13,7 @@ export default {
   name: "Auth",
   components: {Signup, Login},
   setup() {
-    const toggle = ref(false);
+    const toggle = ref(true);
 
     const toggleAuth = () => {
       toggle.value = !toggle.value

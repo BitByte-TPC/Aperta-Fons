@@ -16,7 +16,7 @@
         <router-link to="/auth" style="text-decoration: none; color: inherit;">
           <button class="button hvr-grow">
             <img src="../assets/register.svg" alt="register"/>
-            <p>{{ user ? "Dashboard" : "Register" }}</p>
+            <p>{{ user ? "Dashboard" : "Login" }}</p>
           </button>
         </router-link>
         <a href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
