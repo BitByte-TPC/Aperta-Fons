@@ -37,7 +37,7 @@
           </div>
           <div class="heading3">
             <span
-              ><a :href="doc.link">{{ doc.message }}</a>
+              ><a :href="doc.link" target="_blank">{{ doc.message }}</a>
             </span>
           </div>
           <div class="heading4">
