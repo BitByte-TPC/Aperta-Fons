@@ -216,7 +216,7 @@ export default {
 
 .pr-container {
   min-height: 80vh;
-  max-width: 80vw;
+  width: 80vw;
   margin: 40px auto;
   box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
   border-radius: 16px;

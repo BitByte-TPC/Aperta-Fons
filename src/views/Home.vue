@@ -26,7 +26,7 @@
           </button>
         </a>
       </div>
-      <p id="start">Starts in</p>
+      <p id="start">Ends in</p>
       <div class="timer">
         <span
         ><span>{{ days }}</span> Days</span
@@ -377,7 +377,7 @@ export default {
     const hours = ref(0);
     const mins = ref(0);
     const secs = ref(0);
-    const countDownDate = new Date("Sep 21, 2021 10:00:00").getTime();
+    const countDownDate = new Date("Oct 21, 2021 10:00:00").getTime();
 
     // Update the count down every 1 second
     const x = setInterval(function () {
