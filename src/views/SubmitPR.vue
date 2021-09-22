@@ -131,4 +131,10 @@ export default {
   transform: scale(1.03);
   box-shadow: 4px 4px 40px 4px #466ED1;;
 }
+@media(max-width:900px){
+  .inner{
+    min-width: 90%;
+    width:initial;
+  }
+}
 </style>
