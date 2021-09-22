@@ -694,7 +694,6 @@ export default {
 
   .buttonContainer button {
     text-align: center;
-    width: 8rem;
   }
 
   .buttonContainer button p {
