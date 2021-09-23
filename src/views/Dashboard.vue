@@ -160,6 +160,11 @@ export default {
   cursor: pointer;
 }
 
+.navi button:hover{
+    transform: scale(1.03);
+    background-color:#0745e2; 
+}
+
 .content {
   height: 90vh;
   width: 100vw;
@@ -262,13 +267,29 @@ export default {
   .navi span {
     font-size: initial;
   }
-
   .navi button {
-    font-size: initial;
+    font-size: 70%;
   }
-
   .joke-box button {
     font-size: initial;
+  }
+  .pr-container{
+    margin: auto;
+    width: 90%;
+    text-align: center;
+  }
+  .table-heading{
+    padding: 1rem 0;
+  }
+  .table-heading span{
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .heading3{
+    text-align: center;
+  }
+  .table-content{
+    font-size:0.8rem;
   }
 }
 </style>
