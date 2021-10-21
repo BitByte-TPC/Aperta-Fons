@@ -26,16 +26,16 @@
           </button>
         </a>
       </div>
-      <p id="start">Ends in</p>
+      <p id="start">The event has ended.<br />Thank you for your participation.</p>
       <div class="timer">
         <span
-        ><span>{{ days }}</span> Days</span
+        ><span> 0 </span> Days</span
         ><span>
-          <span>{{ hours }}</span> Hours</span
+          <span> 0 </span> Hours</span
       ><span>
-          <span>{{ mins }}</span> Minutes</span
+          <span> 0 </span> Minutes</span
       ><span>
-          <span>{{ secs }}</span> Seconds</span
+          <span> 0 </span> Seconds</span
       >
       </div>
     </div>

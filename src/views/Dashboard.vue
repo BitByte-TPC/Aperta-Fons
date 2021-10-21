@@ -5,9 +5,9 @@
       <router-link to="/" style="text-decoration: none; color: inherit;">
         <button>Home</button>
       </router-link>
-      <router-link to="/submit" style="text-decoration: none; color: inherit;">
-        <button>Submit PR</button>
-      </router-link>
+<!--      <router-link to="/submit" style="text-decoration: none; color: inherit;">-->
+<!--        <button>Submit PR</button>-->
+<!--      </router-link>-->
       <button @click="handleLogout">Logout</button>
     </div>
   </div>
