@@ -26,16 +26,16 @@
           </button>
         </a>
       </div>
-      <p id="start">The event has ended.<br />Thank you for your participation.</p>
+      <p id="start">The event starts in</p>
       <div class="timer">
         <span
-        ><span> 0 </span> Days</span
+        ><span> {{days}} </span> Days</span
         ><span>
-          <span> 0 </span> Hours</span
+          <span> {{hours}} </span> Hours</span
       ><span>
-          <span> 0 </span> Minutes</span
+          <span> {{mins}} </span> Minutes</span
       ><span>
-          <span> 0 </span> Seconds</span
+          <span> {{secs}} </span> Seconds</span
       >
       </div>
     </div>
@@ -377,7 +377,7 @@ export default {
     const hours = ref(0);
     const mins = ref(0);
     const secs = ref(0);
-    const countDownDate = new Date("Oct 21, 2021 10:00:00").getTime();
+    const countDownDate = new Date("Oct 8 2022 00:00:00").getTime();
 
     // Update the count down every 1 second
     const x = setInterval(function () {
