@@ -377,7 +377,7 @@ export default {
     const hours = ref(0);
     const mins = ref(0);
     const secs = ref(0);
-    const countDownDate = new Date("Oct 8 2022 00:00:00").getTime();
+    const countDownDate = new Date("Dec 5 2022 00:00:00").getTime();
 
     // Update the count down every 1 second
     const x = setInterval(function () {

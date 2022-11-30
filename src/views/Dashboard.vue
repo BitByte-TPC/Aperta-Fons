@@ -72,10 +72,10 @@ export default {
   setup() {
     const { error, logout } = useLogout();
     const router = useRouter();
-    const { documents } = getCollection("dashboard");
+    const { documents } = getCollection("dashboard-2022");
 
     const joke = ref("");
-    const started = ref(true);
+    const started = ref(false);
 
     axios
       .get("https://v2.jokeapi.dev/joke/Programming?type=single")
