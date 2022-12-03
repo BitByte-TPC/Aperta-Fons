@@ -95,7 +95,7 @@
       <div class="prizes">
         <div class="list">
           <p>
-            &bull; <span class="bolder">TOP 20 CONTRIBUTOR</span> can win
+            &bull; <span class="bolder">TOP CONTRIBUTORS</span> can win
             exclusive club t-shirts.
           </p>
           <p>
@@ -108,11 +108,11 @@
             <span class="bolder">NOT ENOUGH?</span>
           </p>
           <p style="margin: 0">
-            &bull; All participants with at least 1 PR merged will get a
+            &bull; Top participants will get
             <span class="bolder"
-            >Google Developer Student Club certificate</span
+            >Exclusive swags and merchandise</span
             >
-            for their participation in the event.
+            for their exceptional performance in the event.
           </p>
         </div>
       </div>
