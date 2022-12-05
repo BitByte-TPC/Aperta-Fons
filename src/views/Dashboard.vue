@@ -5,9 +5,9 @@
       <router-link to="/" style="text-decoration: none; color: inherit;">
         <button>Home</button>
       </router-link>
-<!--      <router-link to="/submit" style="text-decoration: none; color: inherit;">-->
-<!--        <button>Submit PR</button>-->
-<!--      </router-link>-->
+      <router-link to="/submit" style="text-decoration: none; color: inherit;">
+        <button>Submit PR</button>
+      </router-link>
       <button @click="handleLogout">Logout</button>
     </div>
   </div>
@@ -73,9 +73,10 @@ export default {
     const { error, logout } = useLogout();
     const router = useRouter();
     const { documents } = getCollection("dashboard-2022");
+    console.log(documents)
 
     const joke = ref("");
-    const started = ref(false);
+    const started = ref(true);
 
     axios
       .get("https://v2.jokeapi.dev/joke/Programming?type=single")

@@ -43,12 +43,12 @@ const routes = [
     component: Dashboard,
     beforeEnter: requireAuth
   },
-  // {
-  //   path: '/submit',
-  //   name: 'Submit',
-  //   component: SubmitPR,
-  //   beforeEnter: requireAuth
-  // }
+  {
+    path: '/submit',
+    name: 'Submit',
+    component: SubmitPR,
+    beforeEnter: requireAuth
+  }
 ]
 
 const router = createRouter({
