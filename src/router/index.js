@@ -4,6 +4,7 @@ import Auth from "@/views/Auth";
 import {projectAuth} from "@/firebase/config";
 import Dashboard from "@/views/Dashboard";
 import SubmitPR from "@/views/SubmitPR";
+import MyPR from "@/views/MyPR";
 
 const requireAuth = (to, from, next) => {
   let user = projectAuth.currentUser
@@ -47,6 +48,12 @@ const routes = [
     path: '/submit',
     name: 'Submit',
     component: SubmitPR,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/viewPR',
+    name: 'View',
+    component: MyPR,
     beforeEnter: requireAuth
   }
 ]

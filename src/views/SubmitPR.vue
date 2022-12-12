@@ -33,7 +33,8 @@ export default {
         link: link.value,
         displayName,
         score: 0,
-        time: timestamp()
+        time: timestamp(),
+        uid: projectAuth.currentUser.uid
       }
       console.log(doc)
       loading.value = true

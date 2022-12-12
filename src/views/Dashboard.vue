@@ -8,6 +8,9 @@
       <router-link to="/submit" style="text-decoration: none; color: inherit;">
         <button>Submit PR</button>
       </router-link>
+      <router-link to="/viewPR" style="text-decoration: none; color: inherit;">
+        <button>My PR's</button>
+      </router-link>
       <button @click="handleLogout">Logout</button>
     </div>
   </div>
@@ -36,8 +39,7 @@
             <span>{{ doc.displayName }}</span>
           </div>
           <div class="heading3">
-            <span
-              ><a :href="doc.link" target="_blank">{{ doc.message }}</a>
+            <span><a :href="doc.link" target="_blank">{{ doc.message }}</a>
             </span>
           </div>
           <div class="heading4">

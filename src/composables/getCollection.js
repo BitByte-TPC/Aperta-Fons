@@ -6,19 +6,18 @@ const getCollection = (collection) => {
     const error = ref(null)
 
     let collectionRef = projectFirestore.collection(collection).orderBy("time")
-
+    
     const unsub = collectionRef.onSnapshot((snap) => {
-        let results = []
+        let results = []  
         snap.docs.forEach(doc => {
             results.push({ ...doc.data(), id: doc.id })
         })
         documents.value = results.reverse()
         error.value = null
-        console.log(documents.value)
     }, (err) => {
         console.log(err.message)
         documents.value = null
-        error.value = "could not fetech data"
+        error.value = "could not fetch data"
     })
 
     watchEffect((onInvalidate) => {
