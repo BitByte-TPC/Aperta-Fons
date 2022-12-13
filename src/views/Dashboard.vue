@@ -1,55 +1,68 @@
 <template>
   <div class="navi">
-    <span>Dashboard</span>
-    <div class="inner">
-      <router-link to="/" style="text-decoration: none; color: inherit;">
-        <button>Home</button>
-      </router-link>
-      <router-link to="/submit" style="text-decoration: none; color: inherit;">
-        <button>Submit PR</button>
-      </router-link>
-      <router-link to="/viewPR" style="text-decoration: none; color: inherit;">
-        <button>My PR's</button>
-      </router-link>
-      <button @click="handleLogout">Logout</button>
-    </div>
-  </div>
-  <div v-if="!started" class="content">
-    <div class="joke-box">
-      <p>
-        Glad to see you here, but the challenge hasn't started yet.<br />Here is
-        a programming joke for you...
-      </p>
-      <p>
-        <b>{{ joke }}</b>
-      </p>
-      <button @click="getJoke" class="bold">Another joke?</button>
-    </div>
-  </div>
-  <div v-if="started" class="pr-outer">
-    <div class="pr-container">
-      <div class="table-heading">
-        <div class="heading1"><span>Name</span></div>
-        <div class="heading3"><span>Latest PR</span></div>
-        <div class="heading4"><span>Time Added</span></div>
+      <span v-if="userPR">My PR's</span>
+      <span v-else>Dashboard</span>
+      <div class="inner">
+          <router-link to="/dashboard" style="text-decoration: none; color: inherit;">
+              <button v-on:click="handleMyPR()" v-if="userPR">Dashboard</button>
+              <button v-on:click="handleMyPR()" v-else>My PR's</button>
+          </router-link>
+          <router-link to="/submit" style="text-decoration: none; color: inherit;">
+              <button>Submit PR</button>
+          </router-link>
+          <button @click="handleLogout">Logout</button>
       </div>
-      <div v-for="doc in formattedDocuments" :key="doc.id">
-        <div class="table-content">
-          <div class="heading1">
-            <span>{{ doc.displayName }}</span>
+  </div>
+  <div v-if="started && !userPR" class="pr-outer">
+      <div class="pr-container">
+          <div class="table-heading">
+              <div class="heading1"><span>Name</span></div>
+              <div class="heading3"><span>Latest PR</span></div>
+              <div class="heading4"><span>Time Added</span></div>
           </div>
-          <div class="heading3">
-            <span><a :href="doc.link" target="_blank">{{ doc.message }}</a>
-            </span>
+          <div v-for="doc in formattedDocuments" :doc="doc.time">
+              <div class="table-content">
+                  <div class="heading1">
+                      <span>{{ doc.displayName }}</span>
+                  </div>
+                  <div class="heading3">
+                      <span><a :href="doc.link" target="_blank">{{ doc.message }}</a>
+                      </span>
+                  </div>
+                  <div class="heading4">
+                      <span>{{ doc.time }}</span>
+                  </div>
+              </div>
           </div>
-          <div class="heading4">
-            <span>{{ doc.time }}</span>
-          </div>
-        </div>
       </div>
-    </div>
+  </div>
+
+  <div v-if="userPR" class="pr-outer">
+      <div class="pr-container">
+          <div class="table-heading">
+              <div class="heading1"><span>Name</span></div>
+              <div class="heading3"><span>Latest PR</span></div>
+              <div class="heading4"><span>Time Added</span></div>
+          </div>
+          <div v-for="user in formattedUserPRData" :key="user.time">
+              <div class="table-content">
+                  <div class="heading1">
+                      <span>{{ user.displayName }}</span>
+                  </div>
+                  <div class="heading3">
+                      <span><a :href="user.link" target="_blank">{{ user.message }}</a>
+                      </span>
+                  </div>
+                  <div class="heading4">
+                      <span>{{ user.time }}</span>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </template>
+
+
 
 <script>
 import useLogout from "@/composables/useLogout";
@@ -58,63 +71,80 @@ import { computed, ref } from "vue";
 import axios from "axios";
 import { formatDistanceToNow } from "date-fns";
 import getCollection from "../composables/getCollection";
+import { projectAuth } from "../firebase/config";
 
 export default {
-  name: "Dashboard",
-  data() {
-    return {
-      items: [
-        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
-        { age: 21, first_name: "Larsen", last_name: "Shaw" },
-        { age: 89, first_name: "Geneva", last_name: "Wilson" },
-        { age: 38, first_name: "Jami", last_name: "Carney" },
-      ],
-    };
-  },
   setup() {
-    const { error, logout } = useLogout();
-    const router = useRouter();
-    const { documents } = getCollection("dashboard-2022");
-    console.log(documents)
+      const { error, logout } = useLogout();
+      const router = useRouter();
+      const { documents } = getCollection("dashboard-2022");
+      const joke = ref("");
+      const started = ref(true);
+      const userPR = ref(false);
+      var userData = new Map();
+      var userPRData = new Map();
+      console.log(started, userPR)
 
-    const joke = ref("");
-    const started = ref(true);
 
-    axios
-      .get("https://v2.jokeapi.dev/joke/Programming?type=single")
-      .then((res) => {
-        joke.value = res.data.joke;
+
+
+      axios
+          .get("https://v2.jokeapi.dev/joke/Programming?type=single")
+          .then((res) => {
+              joke.value = res.data.joke;
+          });
+
+      const getJoke = () => {
+          axios
+              .get("https://v2.jokeapi.dev/joke/Programming?type=single")
+              .then((res) => {
+                  joke.value = res.data.joke;
+              });
+      };
+
+      const handleMyPR = () => {
+          if (userPR.value) {
+              userPR.value = false;
+          } else {
+          userPR.value = true;
+          }
+      };
+
+      const handleLogout = () => {
+          logout();
+          if (!error.value) {
+              router.push({ name: "Home" });
+          } else {
+              console.log(error.value);
+          }
+      };
+
+      const formattedUserPRData = computed(() => {
+          if (userPRData) {
+              return userPRData
+          }
       });
 
-    const getJoke = () => {
-      axios
-        .get("https://v2.jokeapi.dev/joke/Programming?type=single")
-        .then((res) => {
-          joke.value = res.data.joke;
-        });
-    };
 
-    const handleLogout = () => {
-      logout();
-      if (!error.value) {
-        router.push({ name: "Home" });
-      } else {
-        console.log(error.value);
-      }
-    };
+      const formattedDocuments = computed(() => {
+          console.log(userPR.value)
+          if (documents.value) {
+              const userUID = projectAuth.currentUser.uid;
+              userData = documents.value.map((doc) => {
+                  let time = formatDistanceToNow(doc.time.toDate());
+                  return { ...doc, time: time, time_sec: doc.time };
+              });
+              console.log(userData)
+              userPRData = userData.filter((doc) => {
+                  return doc.uid == userUID;
+              });
+              console.log("userPRData", userPRData)
+              return userData;
 
-    const formattedDocuments = computed(() => {
-      if (documents.value) {
-        return documents.value
-          .map((doc) => {
-            let time = formatDistanceToNow(doc.time.toDate());
-            return { ...doc, time: time };
-          })
-          .slice(0, 10);
-      }
-    });
+          }
+      });
 
-    return { handleLogout, joke, getJoke, started, formattedDocuments };
+      return { handleLogout, handleMyPR, joke, getJoke, started, userPR, formattedDocuments, formattedUserPRData };
   },
 };
 </script>
@@ -163,9 +193,9 @@ export default {
   cursor: pointer;
 }
 
-.navi button:hover{
-    transform: scale(1.03);
-    background-color:#0745e2; 
+.navi button:hover {
+  transform: scale(1.03);
+  background-color: #0745e2;
 }
 
 .content {
@@ -268,31 +298,38 @@ export default {
 
 @media (max-width: 900px) {
   .navi span {
-    font-size: initial;
+      font-size: initial;
   }
+
   .navi button {
-    font-size: 70%;
+      font-size: 70%;
   }
+
   .joke-box button {
-    font-size: initial;
+      font-size: initial;
   }
-  .pr-container{
-    margin: auto;
-    width: 90%;
-    text-align: center;
+
+  .pr-container {
+      margin: auto;
+      width: 90%;
+      text-align: center;
   }
-  .table-heading{
-    padding: 1rem 0;
+
+  .table-heading {
+      padding: 1rem 0;
   }
-  .table-heading span{
-    font-size: 0.9rem;
-    text-align: center;
+
+  .table-heading span {
+      font-size: 0.9rem;
+      text-align: center;
   }
-  .heading3{
-    text-align: center;
+
+  .heading3 {
+      text-align: center;
   }
-  .table-content{
-    font-size:0.8rem;
+
+  .table-content {
+      font-size: 0.8rem;
   }
 }
 </style>
