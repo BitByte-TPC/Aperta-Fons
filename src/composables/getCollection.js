@@ -10,7 +10,7 @@ const getCollection = (collection) => {
     const unsub = collectionRef.onSnapshot((snap) => {
         let results = []  
         snap.docs.forEach(doc => {
-            results.push({ ...doc.data(), id: doc.id })
+            results.push({ ...doc.data(), id: doc.id, time_sec: doc.time })
         })
         documents.value = results.reverse()
         error.value = null
