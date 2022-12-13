@@ -4,7 +4,6 @@ import getCollection from "@/composables/getCollection";
 
 const deleteDocuments = async (n) => {
     const { err, documents } = getCollection("PriorityQueue")
-    console.log(docs)
     const colRef = await projectFirestore.collection("PriorityQueue")
     for(let i = 0; i < n && i < docs.value.length; i++) {
         const docRef = colRef.doc(docs[i].id)

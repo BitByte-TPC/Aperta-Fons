@@ -44,9 +44,6 @@ export default {
         const user = projectAuth.currentUser
         const data = user.providerData[0]
         await addDoc({...data, score: 0})
-
-        console.log(data)
-
         context.emit('login')
       }
     }
@@ -59,8 +56,6 @@ export default {
         const user = projectAuth.currentUser
         const data = user.providerData[0]
         await addDoc({...data, score: 0})
-
-        console.log(data)
         context.emit('login')
       } else {
         console.log(err.value)
