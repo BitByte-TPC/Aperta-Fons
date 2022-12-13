@@ -36,7 +36,6 @@ export default {
         time: timestamp(),
         uid: projectAuth.currentUser.uid
       }
-      console.log(doc)
       loading.value = true
       await addDoc(doc)
       loading.value = false

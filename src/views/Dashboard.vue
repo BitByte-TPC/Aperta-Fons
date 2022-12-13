@@ -83,8 +83,6 @@ export default {
       const userPR = ref(false);
       var userData = new Map();
       var userPRData = new Map();
-      console.log(started, userPR)
-
 
 
 
@@ -127,18 +125,15 @@ export default {
 
 
       const formattedDocuments = computed(() => {
-          console.log(userPR.value)
           if (documents.value) {
               const userUID = projectAuth.currentUser.uid;
               userData = documents.value.map((doc) => {
                   let time = formatDistanceToNow(doc.time.toDate());
                   return { ...doc, time: time, time_sec: doc.time };
               });
-              console.log(userData)
               userPRData = userData.filter((doc) => {
                   return doc.uid == userUID;
               });
-              console.log("userPRData", userPRData)
               return userData;
 
           }
