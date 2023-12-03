@@ -14,19 +14,19 @@
       <p id="text">Presented by The Programming Club, IIITDMJ</p>
       <div class="buttonContainer">
         <router-link to="/auth" style="text-decoration: none; color: inherit;">
-          <button class="button hvr-grow">
+          <button  class="button hvr-grow">
             <img src="../assets/register.svg" alt="register"/>
             <p>{{ user ? "Dashboard" : "Login" }}</p>
           </button>
         </router-link>
         <a href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
           <button class="button hvr-grow">
-            <img src="../assets/discord.svg" alt="discord"/>
+            <img src="../assets/discord.svg" alt="discord" />
             <p>Discord</p>
           </button>
         </a>
       </div>
-      <p id="start">The event ends in</p>
+      <p id="start">The event starts in</p>
       <div class="timer">
         <span
         ><span> {{days}} </span> Days</span
@@ -100,7 +100,7 @@
           </p>
           <p>
             &bull;
-            <span class="bolder">EVERY CONTRIBUTOR</span> who has got at least 3
+            <span class="bolder">EVERY CONTRIBUTOR</span> who has got at least 2
             easy-level and 1 medium-level PR merged to repositories with 100+⭐
             will get exclusive club stickers.
           </p>
@@ -377,7 +377,7 @@ export default {
     const hours = ref(0);
     const mins = ref(0);
     const secs = ref(0);
-    const countDownDate = new Date("Jan 5 2023 00:00:00").getTime();
+    const countDownDate = new Date("December 6 2023 00:00:00").getTime();
 
     // Update the count down every 1 second
     const x = setInterval(function () {
