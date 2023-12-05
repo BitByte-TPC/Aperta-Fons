@@ -4,6 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
+    "site": "apertafons",
     "public": "dist",
     "ignore": [
       "firebase.json",
