@@ -17,7 +17,7 @@
     "jquery": "^3.6.0",
     "particles.js": "^2.0.0",
     "popper": "^1.0.1",
-    "vue": "^3.0.0",
+    "vue": "^3.2.26",
     "vue-anchor-router-link": "^0.8.5",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
