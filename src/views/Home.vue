@@ -134,7 +134,7 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong>Participating in such events provides an amazing learning experience, helps in
             improving your development skills, getting involved in big organizations and helping to build networks. This
             is a great place to get you jump-started and up to speed with various industry-demanded technologies and
@@ -152,7 +152,7 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong> Open source provides you first-hand experience with working on big and real-world
             projects, on which many top companies depend, which will give a huge boost in your development career. Not
             only this, but you also get to work with and learn from some of the most talented developers around the
@@ -170,7 +170,7 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong>Contributing to some real world project will have a huge impact on your CV and you
             will gain some experience about how to work in a large organisation with hundreds of contributors. Though
             direct placement opportunities are rare, there are chances to get full time opportunities in the
@@ -190,7 +190,7 @@
         </h2>
         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong>No, team participation is not allowed in this event. Everyone must participate
             individually. But you can collaborate with each other if contributing to the same organization.
           </div>
@@ -206,7 +206,7 @@
         </h2>
         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong>Head over to the Submit PR tab on your dashboard and fill the form accordingly.
           </div>
         </div>
@@ -221,7 +221,7 @@
         </h2>
         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong>Join our discord server (<a href="https://discord.gg/c3WWbdf983"
                                                                 style="color: #3770ff">click here to join</a>) and the
             mentors would be glad to help you there.
@@ -238,7 +238,7 @@
         </h2>
         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
              data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong> No purchase/payment is necessary to participate or win in this event. It is free of
             cost.
           </div>
