@@ -3,7 +3,8 @@
     <div class="inner">
       <input class="field" type="text" placeholder="Commit Message" v-model="message" required autofocus>
       <input class="field" type="url" placeholder="Link to PR" v-model="link" required>
-      <button v-if="!loading" class="hvr-grow" @click="handleClick">Submit</button>
+      <button v-if="!loading && (link.length==0 || message.length==0)" class="hvr-grow">Submit</button>
+      <button v-else-if="!loading" class="hvr-grow" @click="handleClick">Submit</button>
       <button v-else disabled class="disabled">Submitting</button>
     </div>
   </div>
