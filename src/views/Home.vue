@@ -26,8 +26,9 @@
           </button>
         </a>
       </div>
-      <p id="start">The event starts in</p>
-      <div class="timer">
+      <p id="start">The contest is now live until</p>
+      <div class="timer" id="timer">
+        <Confetti/>
         <span
         ><span> {{days}} </span> Days</span
         ><span>
@@ -250,18 +251,46 @@
 
 <script>
 
+import Vue from 'vue'
 import {ref} from "vue";
 import Nav from "@/components/Nav";
+import Confetti from "@/components/Confetti"
 import {projectAuth} from "@/firebase/config";
-
 
 export default {
   name: "Home",
-  components: {Nav},
+  components: {Nav,Confetti},
   mounted() {
     this.initParticles()
   },
   methods: {
+    methods: {
+      Cstart() {
+        this.$confetti.start();
+      },
+
+      Cstop() {
+        this.$confetti.stop();
+      },
+
+      love() {
+        this.$confetti.update({
+          particles: [
+            {
+              type: 'heart',
+            },
+            {
+              type: 'circle',
+            },
+          ],
+          defaultColors: [
+            'red',
+            'pink',
+            '#ba0000'
+          ],
+        });
+      }
+    },
     initParticles() {
       window.particlesJS("particles-js", {
         "particles": {
@@ -373,35 +402,55 @@ export default {
 
   setup() {
 
-    const days = ref(0);
-    const hours = ref(0);
-    const mins = ref(0);
-    const secs = ref(0);
-    const countDownDate = new Date("December 7 2023 00:00:00").getTime();
+    // a sleep function to use in async function with await
+    function sleep(ms) {return new Promise(resolve => setTimeout(resolve, ms));}
 
+    const days = ref(24);
+    const hours = ref(24);
+    const mins = ref(24);
+    const secs = ref(24);
+    const countDownDate = new Date("January 7 2024 00:00:00").getTime();
+    
     // Update the count down every 1 second
-    const x = setInterval(function () {
-      // Get today's date and time
-      const now = new Date().getTime();
+    async function Countdown() {
+        // Get today's date and time
+        while (true){
+          const now = new Date().getTime();
+          // Find the distance between now and the count down date
+          const distance = countDownDate - now;
 
-      // Find the distance between now and the count down date
-      const distance = countDownDate - now;
+          // Time calculations for days, hours, minutes and seconds
+          days.value = Math.floor(distance / (1000 * 60 * 60 * 24));
+          hours.value = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          mins.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          secs.value = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Time calculations for days, hours, minutes and seconds
-      days.value = Math.floor(distance / (1000 * 60 * 60 * 24));
-      hours.value = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      mins.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      secs.value = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // Display the result in the element with id="demo"
-      // If the count down is finished, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
+          // Display the result in the element with id="demo"
+          // If the count down is finished, write some text
+          // if (distance < 0) {
+          //   clearInterval(x);
+          //   document.getElementById("demo").innerHTML = "EXPIRED";
+          // }
+          await sleep(1000);
+        }
       }
-    }, 1000);
+    async function CountdownConfetti(){
+      while(secs.value >0){
+        days.value -= 1;
+        hours.value -= 1;
+        mins.value -= 1;
+        secs.value -= 1;
+        await sleep(30);
+      }
+      for(let i = 0;i<100;i++){
+        Confetti.methods.frame()
+        await sleep(2)
+      }
+      Countdown()
+    }
+    CountdownConfetti()
 
     const user = projectAuth.currentUser
 

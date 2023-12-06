@@ -10,6 +10,7 @@
     "@popperjs/core": "^2.10.1",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.1",
+    "canvas-confetti": "^1.9.2",
     "core-js": "^3.6.5",
     "date-fns": "^2.24.0",
     "firebase": "^9.0.2",
@@ -23,6 +24,7 @@
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
