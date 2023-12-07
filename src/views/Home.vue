@@ -251,7 +251,6 @@
 
 <script>
 
-import Vue from 'vue'
 import {ref} from "vue";
 import Nav from "@/components/Nav";
 import Confetti from "@/components/Confetti"
@@ -264,33 +263,6 @@ export default {
     this.initParticles()
   },
   methods: {
-    methods: {
-      Cstart() {
-        this.$confetti.start();
-      },
-
-      Cstop() {
-        this.$confetti.stop();
-      },
-
-      love() {
-        this.$confetti.update({
-          particles: [
-            {
-              type: 'heart',
-            },
-            {
-              type: 'circle',
-            },
-          ],
-          defaultColors: [
-            'red',
-            'pink',
-            '#ba0000'
-          ],
-        });
-      }
-    },
     initParticles() {
       window.particlesJS("particles-js", {
         "particles": {
@@ -436,6 +408,7 @@ export default {
           await sleep(1000);
         }
       }
+    // function to countdown and blow confetti
     async function CountdownConfetti(){
       while(secs.value >0){
         days.value -= 1;
@@ -448,8 +421,10 @@ export default {
         Confetti.methods.frame()
         await sleep(2)
       }
+      // The timer until end is triggered after the effect
       Countdown()
     }
+    // confetti is triggered first
     CountdownConfetti()
 
     const user = projectAuth.currentUser
