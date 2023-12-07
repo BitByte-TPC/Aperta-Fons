@@ -399,12 +399,6 @@ export default {
           mins.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           secs.value = Math.floor((distance % (1000 * 60)) / 1000);
 
-          // Display the result in the element with id="demo"
-          // If the count down is finished, write some text
-          // if (distance < 0) {
-          //   clearInterval(x);
-          //   document.getElementById("demo").innerHTML = "EXPIRED";
-          // }
           await sleep(1000);
         }
       }
