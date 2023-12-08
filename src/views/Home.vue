@@ -19,7 +19,7 @@
             <p>{{ user ? "Dashboard" : "Login" }}</p>
           </button>
         </router-link>
-        <a href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
+        <a target="_blank" href="https://discord.gg/c3WWbdf983" style="text-decoration: none">
           <button class="button hvr-grow">
             <img src="../assets/discord.svg" alt="discord" />
             <p>Discord</p>
