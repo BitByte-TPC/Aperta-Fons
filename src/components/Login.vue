@@ -10,6 +10,8 @@
         <input class="field" type="password" required placeholder="Password" v-model="password">
         <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign In</button>
         <button v-else class="disabled hvr-grow">Signing In</button>
+        <p v-if="credError" class="error-line" >Invalid credentials</p>
+          <p v-else-if="internalError" class="error-line" > Something went wrong, please try again.</p>
         <p @click="handleClick">Don’t have an account? Sign up instead</p>
       </div>
     </div>
@@ -29,13 +31,24 @@ export default {
     const email = ref("")
     const password = ref("")
     const loading = ref(false)
-
+    const credError = ref(null);
+    const internalError = ref(null);
     const handleSubmit = async () => {
       loading.value = true
       await login(email.value, password.value)
       loading.value = false
       if (!error.value) {
         context.emit("login")
+      }
+      else if (error.value==="Incorrect login credentials"){
+       credError.value = error.value;
+       email.value="";
+       password.value="";
+      }
+      else{
+        internalError.value=error.value;
+        email.value="";
+       password.value="";
       }
     }
 
@@ -54,7 +67,7 @@ export default {
       context.emit("toggleAuth")
     }
 
-    return {email, password, loading, handleSubmit, handleGoogleSubmit, handleClick}
+    return {email, password, loading, handleSubmit, handleGoogleSubmit, handleClick,credError,internalError}
   }
 }
 </script>
@@ -193,7 +206,10 @@ export default {
 
   cursor: pointer;
 }
-
+.error-line{
+  color: rgb(235 230 56)  !important;
+  cursor:default !important;
+}
 @media (max-width:900px) {
   .signInGoogle{
     width: initial;
