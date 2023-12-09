@@ -12,7 +12,8 @@
           <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign Up</button>
           <button v-else class="disabled hvr-grow">Signing In</button>
           <p v-if="preExistingEmailError" class="error-line" >The email address is already in use by another account.</p>
-          <p v-if="passwordLenghtError" class="error-line" >Password must be atleast 8 characters long.</p>
+          <p v-if="passwordLenghtError" class="error-line" > Password must be atleast 8 characters long.</p>
+          <p v-else-if="internalError" class="error-line" > Something went wrong, please try again.</p>
           <p @click="handleClick">Already have an account? Sign in instead</p>
       </div>
     </div>
@@ -36,6 +37,7 @@ export default {
     const loading = ref(null)
     const preExistingEmailError= ref(null);
     const passwordLenghtError = ref(null);
+    const internalError = ref(null);
     const { error, signup } = useSignup()
     const { e, addDoc} = addUsers("Users")
 
@@ -60,7 +62,13 @@ export default {
         password.value='';
         loading.value= false;
       }
-
+      else{
+        displayName.value="";
+        email.value="";
+        password.value="";
+        internalError.value=error.value;
+        loading.value=false;
+      }
     }
 
     const { err, googleLogin } = useSignInGoogle()
@@ -82,7 +90,7 @@ export default {
     }
 
 
-    return { displayName, email, password, handleSubmit, loading, handleGoogleSubmit, handleClick, error,preExistingEmailError,passwordLenghtError }
+    return { displayName, email, password, handleSubmit, loading, handleGoogleSubmit, handleClick, error,preExistingEmailError,passwordLenghtError,internalError }
   }
 }
 </script>
@@ -222,7 +230,8 @@ export default {
   cursor: pointer;
 }
 .error-line{
-  color: rgb(235 230 56)  !important
+  color: rgb(235 230 56)  !important;
+  cursor:default !important;
 }
 @media (max-width:900px) {
   .signInGoogle{
