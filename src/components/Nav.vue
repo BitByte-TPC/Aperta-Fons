@@ -1,17 +1,17 @@
 <template>
-  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" v-model="isSidebarOpen">
   <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="spinner diagonal part-1"/>
     <div class="spinner horizontal"/>
     <div class="spinner diagonal part-2"/>
   </label>
-  <div id="sidebarMenu">
+  <div id="sidebarMenu" :class="{ 'open': isSidebarOpen }">
     <ul class="sidebarMenuInner">
-      <li><router-link to="/dashboard">Dashboard</router-link></li>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#prize">Prizes</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQs</a></li>
+      <li><router-link to="/dashboard" @click="closeSidebar">Dashboard</router-link></li>
+      <li><a href="#home" @click="closeSidebar">Home</a></li>
+      <li><a href="#about" @click="closeSidebar">About</a></li>
+      <li><a href="#prize" @click="closeSidebar">Prizes</a></li>
+      <li><a href="#faq" @click="closeSidebar">FAQs</a></li>
     </ul>
   </div>
   </template>
@@ -19,7 +19,16 @@
 <script>
 export default {
   name: "Nav",
-
+  data() {
+    return {
+      isSidebarOpen: false
+    };
+  },
+  methods: {
+    closeSidebar() {
+      this.isSidebarOpen = false;
+    }
+  }
 }
 </script>
 
@@ -78,6 +87,9 @@ body {
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 input[type="checkbox"]:checked ~ #sidebarMenu {
   transform: translateX(0);
