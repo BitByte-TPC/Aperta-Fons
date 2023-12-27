@@ -27,7 +27,6 @@ export default {
 html, body {
   overflow-x: hidden;
   height: 100%;
-  z-index: 10;
 }
 body {
   background: #fff;
@@ -53,6 +52,7 @@ body {
   transform: translateX(min(-30vw, -300px));
   transition: transform 300ms ease-in-out;
   background: #3770ff;
+  z-index: 10;
 }
 .sidebarMenuInner{
   margin-bottom: 15vh;
