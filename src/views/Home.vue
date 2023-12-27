@@ -224,7 +224,7 @@
              data-bs-parent="#accordionExample">
           <div class="accordion-body" style="color : #FFFFFF">
             <strong>Ans. </strong>Join our discord server (<a href="https://discord.gg/c3WWbdf983"
-                                                                style="color: #3770ff">click here to join</a>) and the
+                                                                style="color: #3770ff" target="_blank">click here to join</a>) and the
             mentors would be glad to help you there.
           </div>
         </div>
@@ -605,6 +605,7 @@ export default {
   height: 90vh;
   width: 80vw;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .prize-heading {

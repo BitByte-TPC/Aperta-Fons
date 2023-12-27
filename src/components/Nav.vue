@@ -27,6 +27,7 @@ export default {
 html, body {
   overflow-x: hidden;
   height: 100%;
+  z-index: 10;
 }
 body {
   background: #fff;
