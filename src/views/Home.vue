@@ -381,7 +381,7 @@ export default {
     const hours = ref(24);
     const mins = ref(24);
     const secs = ref(24);
-    const countDownDate = new Date("December 31 2023 00:00:00").getTime();
+    const countDownDate = new Date("January 05 2024 00:00:00").getTime();
     
     // Update the count down every 1 second
     async function Countdown() {
