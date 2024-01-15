@@ -29,15 +29,19 @@
       <p id="start">The contest is now live until</p>
       <div class="timer" id="timer">
         <Confetti/>
-        <span
-        ><span> {{days}} </span> Days</span
-        ><span>
-          <span> {{hours}} </span> Hours</span
-      ><span>
-          <span> {{mins}} </span> Minutes</span
-      ><span>
-          <span> {{secs}} </span> Seconds</span
-      >
+        <span>
+  <span>{{ String(days).padStart(2, '0') }}</span> Days
+</span>
+<span>
+  <span>{{ String(hours).padStart(2, '0') }}</span> Hours
+</span>
+<span>
+  <span>{{ String(mins).padStart(2, '0') }}</span> Minutes
+</span>
+<span>
+  <span>{{ String(secs).padStart(2, '0') }}</span> Seconds
+</span>
+
       </div>
     </div>
   </div>
