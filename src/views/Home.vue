@@ -793,3 +793,39 @@ export default {
   height: 100vh;
 }
 </style>
+<!--  Code to set the timer to zero once the event has ended-->
+<script>
+export default {
+  data() {
+    return {
+      days: 0,
+      hours: 0,
+      mins: 0,
+      secs: 0,
+      eventDate: new Date('2024-01-15T12:00:00'), 
+    };
+  },
+  mounted() {
+    this.updateTimer();
+    setInterval(this.updateTimer, 1000); 
+  },
+  methods: {
+    updateTimer() {
+      const currentDate = new Date();
+      const timeDifference = this.eventDate - currentDate;
+
+      if (timeDifference < 0) {
+        this.days = 0;
+        this.hours = 0;
+        this.mins = 0;
+        this.secs = 0;
+      } else {
+        this.days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        this.hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        this.mins = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        this.secs = Math.floor((timeDifference % (1000 * 60)) / 1000);
+      }
+    },
+  },
+};
+</script>
