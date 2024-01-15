@@ -1,6 +1,5 @@
 <template>
   <!--  Navigation Section-->
-
   <Nav/>
 
 
