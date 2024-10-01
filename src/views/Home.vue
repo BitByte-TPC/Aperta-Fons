@@ -382,7 +382,9 @@ export default {
     const hours = ref(24);
     const mins = ref(24);
     const secs = ref(24);
-    const countDownDate = new Date("October 03 2024 00:00:00").getTime();
+
+    const countDownDate = new Date("October 12 2024 00:00:00").getTime();
+
 
     // Update the count down every 1 second
     async function Countdown() {
