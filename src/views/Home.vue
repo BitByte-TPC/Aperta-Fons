@@ -69,7 +69,8 @@
         <p>
           The goals of our Event are to:
           <br/>
-          - <span class="highlight">Inspire</span> you to begin participating in
+          - <span class="highlight">Inspire</span> yoNadi ayyindhi
+9:58 pmu to begin participating in
           open source development.
           <br/>
           - <span class="highlight">Identifying</span> open-source projects and
@@ -381,8 +382,8 @@ export default {
     const hours = ref(24);
     const mins = ref(24);
     const secs = ref(24);
-    const countDownDate = new Date("December 31 2023 00:00:00").getTime();
-    
+    const countDownDate = new Date("October 03 2024 00:00:00").getTime();
+
     // Update the count down every 1 second
     async function Countdown() {
         // Get today's date and time
@@ -435,15 +436,19 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display:flex;
+  justify-content: center;
+  text-align: center;
+  padding:20px 0 20px 0;
 }
 
 .container {
-  margin-left: 38vw;
+
   padding: 23vh 0 0 0;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #heading {
@@ -453,7 +458,7 @@ export default {
   line-height: 14vh;
   color: #fff;
   background: none;
-  text-align: left;
+  text-align: center;
 }
 
 #subH {
@@ -462,7 +467,7 @@ export default {
   line-height: 5.2vh;
   color: #fff;
   font-weight: initial;
-  text-align: left;
+  text-align: center;
   margin: 2vh 0 0 0;
 }
 
@@ -471,7 +476,7 @@ export default {
   font-size: 2.3vh;
   line-height: 3.3vh;
   color: #ffffff;
-  text-align: left;
+  text-align: center;
   margin: 1.2vh 0 0 0;
 }
 
@@ -502,6 +507,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   transition-duration: 0.3s;
   transition-property: transform;
+  line-height: 35px;
 }
 
 .hvr-grow:hover,
@@ -569,6 +575,7 @@ export default {
   width: 45vw;
   display: flex;
   justify-content: space-between;
+  gap:12px;
 }
 
 #start {
@@ -682,11 +689,7 @@ export default {
 
 @media (max-width: 900px) {
 
-  .container {
-    margin-left: 0;
-    padding: 8rem 2rem 0 2rem;
-    text-align: center;
-  }
+
 
   .home {
     height: initial;
