@@ -77,7 +77,7 @@ export default {
   setup() {
       const { error, logout } = useLogout();
       const router = useRouter();
-      const { documents } = getCollection("dashboard-2023");
+      const { documents } = getCollection("dashboard-2024");
       const joke = ref("");
       const started = ref(true);
       const userPR = ref(false);
