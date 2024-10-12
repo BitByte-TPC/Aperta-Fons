@@ -24,7 +24,7 @@ export default {
     const link = ref("");
     const loading = ref(false)
 
-    const { error, addDoc } = useCollection("dashboard-2023")
+    const { error, addDoc } = useCollection("dashboard-2024")
     const displayName = projectAuth.currentUser.displayName
     const router = useRouter();
 
