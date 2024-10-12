@@ -26,19 +26,35 @@
           </button>
         </a>
       </div>
-      <p id="start">The contest is now live until</p>
-      <div class="timer" id="timer">
-        <Confetti/>
-        <span
-        ><span> {{days}} </span> Days</span
-        ><span>
-          <span> {{hours}} </span> Hours</span
-      ><span>
-          <span> {{mins}} </span> Minutes</span
-      ><span>
-          <span> {{secs}} </span> Seconds</span
-      >
+      <div v-if="current < countDownDate">
+        <p id="start">The event Starts at  .... !!!</p>
+        <div class="timer" id="timer">
+        <Confetti />
+        <span><span>{{ days }}</span> Days</span>
+        <span><span>{{ hours }}</span> Hours</span>
+        <span><span>{{ mins }}</span> Minutes</span>
+        <span><span>{{ secs }}</span> Seconds</span>
+        </div>
       </div>
+          
+
+    <!-- After the event ends -->
+    <div v-else-if="current > countToDate">
+      <p id="start">The event  has ended!!! ,Do visit the Leaderboard!!!</p>
+    </div>
+
+    <!-- During the event -->
+    <div v-else>
+      <p id="start">The event is live && will be ending on ....!!!</p>
+      <div class="timer" id="timer">
+      <Confetti />
+      <span><span>{{ days }}</span> Days</span>
+      <span><span>{{ hours }}</span> Hours</span>
+      <span><span>{{ mins }}</span> Minutes</span>
+      <span><span>{{ secs }}</span> Seconds</span>
+      </div>
+
+    </div>
     </div>
   </div>
 
@@ -383,16 +399,18 @@ export default {
     const mins = ref(24);
     const secs = ref(24);
 
-    const countDownDate = new Date("October 12 2024 00:00:00").getTime();
-
-
+    const countDownDate = new Date("October 12 2024 22:00:00").getTime();
+    const countToDate = new Date("November 12 2024 24:00:00").getTime();
+    const current = new Date().getTime();
     // Update the count down every 1 second
     async function Countdown() {
         // Get today's date and time
+        if(countDownDate > countToDate) {throw new Error("Please use appropriate date")}
         while (true){
           const now = new Date().getTime();
           // Find the distance between now and the count down date
-          const distance = countDownDate - now;
+          const distance = Math.max((now > countDownDate ? countToDate-now : countDownDate - now),0);
+
 
           // Time calculations for days, hours, minutes and seconds
           days.value = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -426,9 +444,10 @@ export default {
 
     const user = projectAuth.currentUser
 
-    return {days, hours, mins, secs, user};
+    return {days, hours, mins, secs, user,current,countDownDate,countToDate};
   },
 };
+
 </script>
 
 <style scoped>
@@ -582,7 +601,7 @@ export default {
 
 #start {
   font-family: "Poppins", sans-serif;
-  font-size: 2vh;
+  font-size: 4vh;
   color: #ffffff;
   margin: 5vh 0 0 0;
 }
