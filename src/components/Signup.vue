@@ -11,6 +11,9 @@
         <input class="field" type="password" required placeholder="Password" v-model="password">
           <button v-if="!loading" @click="handleSubmit" class="hvr-grow">Sign Up</button>
           <button v-else class="disabled hvr-grow">Signing In</button>
+          <p v-if="preExistingEmailError" class="error-line" >The email address is already in use by another account.</p>
+          <p v-if="passwordLenghtError" class="error-line" > Password must be atleast 8 characters long.</p>
+          <p v-else-if="internalError" class="error-line" > Something went wrong, please try again.</p>
           <p @click="handleClick">Already have an account? Sign in instead</p>
       </div>
     </div>
@@ -32,7 +35,9 @@ export default {
     const email = ref("")
     const password = ref("")
     const loading = ref(null)
-
+    const preExistingEmailError= ref(null);
+    const passwordLenghtError = ref(null);
+    const internalError = ref(null);
     const { error, signup } = useSignup()
     const { e, addDoc} = addUsers("Users")
 
@@ -45,6 +50,24 @@ export default {
         const data = user.providerData[0]
         await addDoc({...data, score: 0})
         context.emit('login')
+      }
+      else if(error.value==="Firebase: The email address is already in use by another account. (auth/email-already-in-use)."){
+        preExistingEmailError.value = "Firebase: The email address is already in use by another account. (auth/email-already-in-use).";
+        email.value='';
+        password.value='';
+        loading.value= false;
+      }
+      else if(error.value==="Firebase: Password should be at least 6 characters (auth/weak-password)."){
+        passwordLenghtError.value = "Firebase: Password should be at least 6 characters (auth/weak-password).";
+        password.value='';
+        loading.value= false;
+      }
+      else{
+        displayName.value="";
+        email.value="";
+        password.value="";
+        internalError.value=error.value;
+        loading.value=false;
       }
     }
 
@@ -67,7 +90,7 @@ export default {
     }
 
 
-    return { displayName, email, password, handleSubmit, loading, handleGoogleSubmit, handleClick }
+    return { displayName, email, password, handleSubmit, loading, handleGoogleSubmit, handleClick, error,preExistingEmailError,passwordLenghtError,internalError }
   }
 }
 </script>
@@ -206,7 +229,10 @@ export default {
 
   cursor: pointer;
 }
-
+.error-line{
+  color: rgb(235 230 56)  !important;
+  cursor:default !important;
+}
 @media (max-width:900px) {
   .signInGoogle{
     width: initial;
